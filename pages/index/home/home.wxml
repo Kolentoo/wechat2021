@@ -3,36 +3,17 @@
     <view class="search">
       <van-search value="{{ keywords }}" placeholder="请输入搜索关键词" bind:search="onSearch"  />
     </view>
-    <view class="container">
-      <view class="page-body">
-        <view class="page-section page-section-spacing swiper">
-          <swiper indicator-dots="{{indicatorDots}}"
-            autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-            <block wx:for="{{background}}" wx:key="*this">
-              <swiper-item>
-                <view class="swiper-item {{item}}">111</view>
-              </swiper-item>
-            </block>
-          </swiper>
-        </view>
-        <view class="page-section" style="margin-top: 40rpx;margin-bottom: 0;">
-          <view class="weui-cells weui-cells_after-title">
-            <view class="weui-cell weui-cell_switch">
-              <view class="weui-cell__bd">指示点</view>
-              <view class="weui-cell__ft">
-                <switch checked="{{indicatorDots}}" bindchange="changeIndicatorDots" />
-              </view>
+    <view class="page-section page-section-spacing swiper">
+      <swiper indicator-dots="{{indicatorDots}}"
+        autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+        <block wx:for="{{banners}}" wx:key="*this">
+          <swiper-item>
+            <view class="swiper-item {{item}}">
+              <image src="{{item.banner}}" aspectFit></image>
             </view>
-            <view class="weui-cell weui-cell_switch">
-              <view class="weui-cell__bd">自动播放</view>
-              <view class="weui-cell__ft">
-                <switch checked="{{autoplay}}" bindchange="changeAutoplay" />
-              </view>
-            </view>
-          </view>
-        </view>
-
-      </view>
+          </swiper-item>
+        </block>
+      </swiper>
     </view>
   </view>
 </view>

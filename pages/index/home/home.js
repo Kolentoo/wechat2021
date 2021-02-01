@@ -7,11 +7,14 @@ Page({
   data: {
     keywords:'',
     // 轮播图
-    background: ['demo-text-1', 'demo-text-2', 'demo-text-3'],
+    banners: [
+      {banner:'../../../images/banner1.jpg'},
+      {banner:'../../../images/banner2.jpg'}
+    ],
     indicatorDots: true,
     vertical: false,
     autoplay: false,
-    interval: 2000,
+    interval: 3000,
     duration: 500
   },
 
