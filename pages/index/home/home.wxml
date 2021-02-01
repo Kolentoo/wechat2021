@@ -1,0 +1,7 @@
+<view class="home">
+  <view class="head">
+    <view class="search">
+      <van-search value="{{ keywords }}" placeholder="请输入搜索关键词" bind:search="onSearch"  />
+    </view>
+  </view>
+</view>
