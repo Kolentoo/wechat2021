@@ -16,4 +16,12 @@
       </swiper>
     </view>
   </view>
+  <view class="menu">
+    <view class="menu-list" wx:for="{{menuBox}}">
+      <view class="icon-box">
+        <image src="{{item.pic}}" mode="widthFix"></image>
+      </view>
+      <text class="menu-txt">{{item.name}}</text>
+    </view>
+  </view>
 </view>

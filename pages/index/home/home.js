@@ -15,7 +15,15 @@ Page({
     vertical: false,
     autoplay: false,
     interval: 3000,
-    duration: 500
+    duration: 500,
+
+    // 顶部菜单
+    menuBox:[
+      {pic:'../../../images/icon1.jpg',name:'番剧榜单'},
+      {pic:'../../../images/icon2.jpg',name:'一月新番'},
+      {pic:'../../../images/icon3.jpg',name:'正在热映'},
+      {pic:'../../../images/icon4.jpg',name:'即将上映'},
+    ]
   },
 
   onSearch(e){
