@@ -4,7 +4,7 @@
       <van-search value="{{ keywords }}" placeholder="请输入搜索关键词" bind:search="onSearch"  />
     </view>
     <view class="page-section page-section-spacing swiper">
-      <swiper indicator-dots="{{indicatorDots}}"
+      <swiper indicator-dots="{{indicatorDots}}" circular="{{circular}}"
         autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
         <block wx:for="{{banners}}" wx:key="*this">
           <swiper-item>
@@ -17,11 +17,101 @@
     </view>
   </view>
   <view class="menu">
-    <view class="menu-list" wx:for="{{menuBox}}">
+    <view class="menu-list" wx:for="{{menuBox}}" wx:key="this">
       <view class="icon-box">
         <image src="{{item.pic}}" mode="widthFix"></image>
       </view>
       <text class="menu-txt">{{item.name}}</text>
     </view>
   </view>
+  <view class="content">
+    <view class="hot">
+      <van-cell value="发现更多" icon="fire" is-link>
+        <view slot="title">
+          <view class="van-cell-text">热门推荐</view>
+        </view>
+      </van-cell>
+      <van-loading wx:if="{{hotBox.length==0}}" color="#4a9899" size="20px">接受能量中...</van-loading>
+      <view class="home-box" wx:if="{{hotBox.length>0}}">
+        <view class="home-con clearfix">
+          <view class="home-list" wx:for="{{hotBox}}" wx:key="this">
+            <view class="img-list" >
+              <image src="{{item.src}}" mode="scaleToFill"></image>
+            </view>
+            <view class="info">
+              <text class="name">{{item.title}}</text>
+              <text class="score">{{item.score}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="ranking">
+      <van-cell value="发现更多" icon="gem" is-link>
+        <view slot="title">
+          <view class="van-cell-text">番剧榜单</view>
+        </view>
+      </van-cell>
+      <van-loading wx:if="{{rankingBox.length==0}}" color="#4a9899" size="20px">接受能量中...</van-loading>
+      <view class="home-box"  wx:if="{{rankingBox.length>0}}">
+        <view class="home-con clearfix">
+          <view class="home-list" wx:for="{{rankingBox}}" wx:key="this">
+            <view class="img-list" >
+              <image src="{{item.src}}" mode="scaleToFill"></image>
+            </view>
+            <view class="info">
+              <text class="name">{{item.title}}</text>
+              <text class="score">{{item.score}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="playing">
+      <van-cell value="发现更多" icon="live" is-link>
+        <view slot="title">
+          <view class="van-cell-text">正在热映</view>
+        </view>
+      </van-cell>
+      <van-loading wx:if="{{playingBox.length==0}}" color="#4a9899" size="20px">接受能量中...</van-loading>
+      <view class="home-box" wx:if="{{playingBox.length>0}}">
+        <view class="home-con clearfix">
+          <view class="home-list" wx:for="{{playingBox}}" wx:key="this">
+            <view class="img-list" >
+              <image src="{{item.href}}" mode="scaleToFill"></image>
+            </view>
+            <view class="info">
+              <text class="name">{{item.title}}</text>
+              <text class="score">{{item.score}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="comming">
+      <van-cell value="发现更多" icon="send-gift" is-link>
+        <view slot="title">
+          <view class="van-cell-text">即将上映</view>
+        </view>
+      </van-cell>
+      <van-loading wx:if="{{commingBox.length==0}}" color="#4a9899" size="20px">接受能量中...</van-loading>
+      <view class="home-box" wx:if="{{commingBox.length>0}}">
+        <view class="home-con clearfix">
+          <view class="home-list" wx:for="{{commingBox}}" wx:key="this">
+            <view class="img-list" >
+              <image src="{{item.href}}" mode="scaleToFill"></image>
+            </view>
+            <view class="info">
+              <text class="name">{{item.title}}</text>
+              <text class="score">{{item.score}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <bottom></bottom>
 </view>

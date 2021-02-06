@@ -1,16 +1,31 @@
 /* pages/index/home/home.wxss */
 /* https://huaban.com/pins/1240167683/ */
+/* 图标处理 */
+.van-icon {color:#4a9899!important;}
+.van-loading {width: 100%;text-align:center;padding:200rpx 0;}
+
 /* 顶部栏目 */
-.search {background: #ffb14a;}
-.van-search {background: #ffb14a!important;}
+.search {background: #4a9899;}
+.van-search {background: #4a9899!important;}
 .van-search__content {border-radius:100rpx!important;}
 .home swiper {width: 100vw;height: 300rpx;}
 .home .swiper .swiper-item {height: 100%;}
 .home .swiper .swiper-item image {width: 100%;height: 100%;}
 
 /* 顶部菜单 */
-.menu {width: 100%;display:flex;justify-content: center;align-items: center;padding:50rpx 0;}
+.menu {width: 100%;display:flex;justify-content: center;align-items: center;padding:50rpx 0 35rpx 0;}
 .menu-list {width: 24%;text-align: center;}
 .menu-list .icon-box {width: 50%;margin:0 auto;}
 .menu-list .icon-box image{width: 100%;}
 .menu-list .menu-txt {font-size: 24rpx;color:#333;position: relative;top:-10rpx;}
+
+/* 推荐部分 */
+.content {padding-bottom: 160rpx;}
+.home-box {margin-top: 10rpx;}
+.home-con {width: 94%;margin:0 auto;}
+.home-list {width: 30.333%;margin:5rpx 1.5%;float: left;}
+.img-list {width: 100%;border-radius:10rpx;overflow: hidden;}
+.img-list image{width: 100%;vertical-align: middle;height: 310rpx;}
+.home-list .info {min-height: 100rpx;overflow: hidden;}
+.home-list .name {color:#333;font-size:26rpx;line-height: 26rpx;height: 90rpx;}
+.home-list .score {font-size:26rpx;color:#4a9899;margin-left: 16rpx;}

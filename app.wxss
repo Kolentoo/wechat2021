@@ -8,3 +8,18 @@
   padding: 200rpx 0;
   box-sizing: border-box;
 } 
+
+.block {display: block;}
+.hide {display: none;}
+.g10 {width: 100%;}
+.vm {vertical-align: middle;}
+.fl {float: left;}
+.fr {font: 1em sans-serif;}
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
