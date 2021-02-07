@@ -1,3 +1,4 @@
+<wxs src="./home.wxs" module="fixedName" />
 <view class="home">
   <view class="head">
     <view class="search">
@@ -80,7 +81,7 @@
         <view class="home-con clearfix">
           <view class="home-list" wx:for="{{playingBox}}" wx:key="this">
             <view class="img-list" >
-              <image src="{{item.href}}" mode="scaleToFill"></image>
+              <image src="{{fixedName(item.href)}}" mode="scaleToFill"></image>
             </view>
             <view class="info">
               <text class="name">{{item.title}}</text>
@@ -102,7 +103,7 @@
         <view class="home-con clearfix">
           <view class="home-list" wx:for="{{commingBox}}" wx:key="this">
             <view class="img-list" >
-              <image src="{{item.href}}" mode="scaleToFill"></image>
+              <image src="{{fixedName(item.href)}}" mode="scaleToFill"></image>
             </view>
             <view class="info">
               <text class="name">{{item.title}}</text>

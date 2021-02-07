@@ -1,16 +1,15 @@
-// pages/index/home/home.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    kolento:'https://www.kolento.club',
+    kolento:'https://kolento.club',
     keywords:'',
     // 轮播图
     banners: [
-      {banner:'../../../images/banner1.jpg'},
-      {banner:'../../../images/banner2.jpg'}
+      {banner:'../../images/banner1.jpg'},
+      {banner:'../../images/banner1.jpg'}
     ],
     indicatorDots: true,
     vertical: false,
@@ -21,10 +20,10 @@ Page({
 
     // 顶部菜单
     menuBox:[
-      {pic:'../../../images/icon1.jpg',name:'热门榜单'},
-      {pic:'../../../images/icon2.jpg',name:'新番导视'},
-      {pic:'../../../images/icon3.jpg',name:'正在热映'},
-      {pic:'../../../images/icon4.jpg',name:'即将上映'},
+      {pic:'../../images/icon1.jpg',name:'热门榜单'},
+      {pic:'../../images/icon2.jpg',name:'新番导视'},
+      {pic:'../../images/icon3.jpg',name:'正在热映'},
+      {pic:'../../images/icon4.jpg',name:'即将上映'},
     ],
     
     // 热门推荐

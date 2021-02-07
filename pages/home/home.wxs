@@ -1,0 +1,11 @@
+{/* <wxs module="tools"> */}
+ // 修改图片后缀名
+  var fixedName = function(href){
+    if(href.indexOf('webp')>-1){
+      var result = href.replace('webp','jpg');
+      console.log('jpg',result)
+      return result;
+    }
+  }
+    module.exports = fixedName;
+// </wxs>
