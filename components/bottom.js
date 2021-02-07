@@ -14,10 +14,10 @@ Component({
     active:0
   },
 
-onChange(event) {
-  console.log('event')
-  this.setData({ active: event.detail });
-},
+  onChange(event) {
+    console.log('event')
+    this.setData({ active: event.detail });
+  },
 
   /**
    * 组件的方法列表

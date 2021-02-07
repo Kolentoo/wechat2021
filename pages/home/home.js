@@ -53,7 +53,7 @@ Page({
         console.log(res.data);
         if(res.data.flag=='success'){
           self.setData({
-            hotBox: res.data.result
+            hotBox: res.data.res
           });
         }
       }
@@ -73,7 +73,7 @@ Page({
         console.log(res.data);
         if(res.data.flag=='success'){
           self.setData({
-            rankingBox: res.data.result
+            rankingBox: res.data.res
           });
         }
       }
@@ -93,7 +93,7 @@ Page({
         console.log(res.data);
         if(res.data.flag=='success'){
           self.setData({
-            playingBox: res.data.result
+            playingBox: res.data.res
           });
         }
       }
@@ -113,7 +113,7 @@ Page({
         console.log(res.data);
         if(res.data.flag=='success'){
           self.setData({
-            commingBox: res.data.result
+            commingBox: res.data.res
           });
         }
       }
