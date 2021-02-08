@@ -9,7 +9,7 @@ Page({
     active: 0,
     swipeable:true,
     recommendBox:[],
-    scoreBox:[],
+    rankingBox:[],
     start1:0,
     num1:20,
     start2:0,
@@ -40,6 +40,26 @@ Page({
     })
   },
 
+  // 获取评分最高动漫
+  getRanking(start,num){
+    let self = this;
+    wx.request({
+      url: `${this.data.kolento}/anime/ranking/${start}/${num}`, 
+      // data: {},
+      header: {
+        'content-type': 'application/json' 
+      },
+      success (res) {
+        console.log(res.data.res);
+        if(res.data.flag=='success'){
+          self.setData({
+            rankingBox: res.data.res
+          });
+        }
+      }
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -51,7 +71,8 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    this.getAll(0,10);
+    this.getAll(this.data.start1,this.data.num1);
+    this.getRanking(this.data.start2,this.data.num2);
   },
 
   /**

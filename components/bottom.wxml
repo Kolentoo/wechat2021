@@ -1,14 +1,14 @@
 <!--components/bottom.wxml-->
-<div class="bottom">
+<view class="bottom">
     <van-tabbar
       active="{{ active }}"
       active-color="#4a9899"
       inactive-color="#333"
       bind:change="onChange"
     >
-    <van-tabbar-item icon="home-o">首页</van-tabbar-item>
-    <van-tabbar-item icon="flower-o">番剧</van-tabbar-item>
+    <van-tabbar-item icon="home-o" replace to="../pages/home">首页</van-tabbar-item>
+    <van-tabbar-item icon="flower-o" replace to="../pages/anime">番剧</van-tabbar-item>
     <van-tabbar-item icon="shop-collect-o">发现</van-tabbar-item>
     <van-tabbar-item icon="smile-o">我的</van-tabbar-item>
   </van-tabbar>
-</div>
+</view>

@@ -1,6 +1,6 @@
 /* pages/anime.wxss */
 
-.anime-box {padding:25rpx;}
+.anime-box {padding:25rpx 25rpx 180rpx;}
 .anime-list {width: 100%;margin-bottom: 25rpx;}
 .anime-list .pic-box {width: 30%;border-radius:10rpx;overflow: hidden;}
 .anime-list .pic-box image {vertical-align: middle;height: 320rpx;width: 250rpx;}
@@ -9,5 +9,5 @@
 .anime-list .score .num {font-size: 30rpx;margin-left: 10rpx;}
 .anime-list .name {font-size: 32rpx;margin-bottom: 5rpx;}
 .anime-list .info {margin-top: 10rpx;}
-.anime-list .info .director {color:#888;font-size: 26rpx;margin-bottom: 15rpx;}
-.anime-list .info .actor {color:#888;font-size: 26rpx;}
+.anime-list .info .director {color:#888;font-size: 24rpx;margin-bottom: 10rpx;}
+.anime-list .info .actor {color:#888;font-size: 24rpx;}

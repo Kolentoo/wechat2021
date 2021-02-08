@@ -23,7 +23,27 @@
         </view>
       </view>
     </van-tab>
-    <van-tab title="评分最高">内容 2</van-tab>
+    <van-tab title="评分最高">
+      <view class="anime-box">
+        <view class="anime-list clearfix" wx:for="{{rankingBox}}" wx:key="this">
+          <view class="pic-box fl">
+            <image src="{{item.src}}" mode="scaleToFill"></image>
+          </view>
+          <view class="detail fl">
+            <view class="name">{{item.title}}</view>
+            <view class="score">
+              <van-rate value="{{ item.score }}" size="{{ 16 }}" allow-half 
+                color="#b5482c" void-color="#b5482c"  void-icon="star" />
+              <text class="num">{{item.score}}</text>
+            </view>
+            <view class="info">
+              <view class="director">{{item.director}}</view>
+              <view class="actor">{{item.actor}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </van-tab>
   </van-tabs>
   <bottom></bottom>
 </view>

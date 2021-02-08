@@ -1,0 +1,61 @@
+<view class="my">
+  <view class="info">
+    <van-cell value="编辑" icon="" is-link center >
+      <view slot="title" class="info-con clearfix" >
+        <view class="van-cell-text avatar fl">
+          <image src="{{mail}}" mode="widthFix"></image>
+        </view>
+        <view class="name-box fl">
+          <view class="name">昵称: {{name}}</view>
+          <view class="other">
+            <text class="sex">性别: {{sex==1?'男':'女'}}</text>
+            <text class="id">id: {{id}}</text>
+          </view>
+        </view>
+      </view>
+    </van-cell>
+    <view class="menu-box">
+      <van-grid column-num="4" border="{{ false }}" >
+        <van-grid-item use-slot wx:for="{{ menuBox }}" wx:key="index">
+          <image style="width: 24px; height: 24px;" src="{{item.src}}" />
+          <view class="txt">{{item.txt}}</view>
+        </van-grid-item>
+      </van-grid>
+    </view>
+  </view>
+  <view class="setting">
+    <van-cell value="" is-link>
+      <view slot="title">
+        <text class="van-cell-text">追剧</text>
+        <van-tag type="danger" class="tag">收藏</van-tag>
+      </view>
+    </van-cell>
+    <van-cell value="" is-link>
+      <view slot="title">
+        <text class="van-cell-text">消息</text>
+        <van-tag type="danger" class="tag">99</van-tag>
+      </view>
+    </van-cell>
+    <van-cell value="" is-link>
+      <view slot="title">
+        <text class="van-cell-text">反馈留言</text>
+      </view>
+    </van-cell>
+    <van-cell value="" is-link>
+      <view slot="title">
+        <text class="van-cell-text">关注追剧社微博</text>
+      </view>
+    </van-cell>
+    <van-cell value="" is-link>
+      <view slot="title">
+        <text class="van-cell-text">关于</text>
+      </view>
+    </van-cell>
+    <van-cell value="" is-link>
+      <view slot="title">
+        <text class="van-cell-text">设置</text>
+      </view>
+    </van-cell>
+  </view>
+  <bottom></bottom>
+</view>

@@ -1,0 +1,15 @@
+.my {background: rgb(247,248,250);}
+.avatar {width: 120rpx;height: 120rpx;border-radius:10rpx;overflow: hidden;}
+.avatar image{width: 100%;vertical-align: middle;}
+
+.menu-box {padding:10px 0;background: #fff;}
+.info .info-con {width: 400rpx;}
+.info .name-box {padding:15rpx;margin-left: 15rpx;}
+.info .name {font-size: 28rpx;}
+.info .sex {color:#888;font-size: 26rpx;}
+.info .id {color:#888;font-size: 26rpx;margin-left: 15rpx;}
+.txt {font-size: 26rpx;margin-top: 5rpx;color:#333}
+
+.setting .tag {margin-left: 5rpx;}
+.setting {margin-top: 30rpx;}
+.setting .van-cell {padding:20px 16px!important;}

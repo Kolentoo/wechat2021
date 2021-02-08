@@ -1,7 +1,9 @@
 {
   "pages": [
-    "pages/anime/anime",
     "pages/home/home",
+    "pages/my/my",
+    
+    "pages/anime/anime",
     "pages/index/index",
     "pages/logs/logs"
     
@@ -25,6 +27,9 @@
     "van-tabbar-item": "@vant/weapp/tabbar-item/index",
     "van-tab": "@vant/weapp/tab/index",
     "van-tabs": "@vant/weapp/tabs/index",
-    "van-rate": "@vant/weapp/rate/index"
+    "van-rate": "@vant/weapp/rate/index",
+    "van-grid": "@vant/weapp/grid/index",
+    "van-grid-item": "@vant/weapp/grid-item/index",
+    "van-tag": "@vant/weapp/tag/index"
   }
 }
