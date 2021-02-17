@@ -26,7 +26,7 @@ Component({
       {
         "url": "/pages/discover/discover",
         "icon": "shop-collect-o",
-        "text": "发现"
+        "text": "收藏"
       },
       {
         "url": "/pages/my/my",

@@ -20,10 +20,10 @@ Page({
 
     // 顶部菜单
     menuBox:[
-      {pic:'../../images/icon1.jpg',name:'热门榜单'},
-      {pic:'../../images/icon2.jpg',name:'新番导视'},
-      {pic:'../../images/icon3.jpg',name:'正在热映'},
-      {pic:'../../images/icon4.jpg',name:'即将上映'},
+      {pic:'../../images/icon1.jpg',name:'热门榜单',url:'../anime/anime'},
+      {pic:'../../images/icon2.jpg',name:'新番导视',url:'../discover/discover'},
+      {pic:'../../images/icon3.jpg',name:'正在热映',url:'../film/film'},
+      {pic:'../../images/icon4.jpg',name:'即将上映',url:'../film/film'},
     ],
     
     // 热门推荐
@@ -120,6 +120,21 @@ Page({
     })
   },
 
+  // 首页菜单栏跳转
+  goMenu(event){
+    console.log('event',event);
+    if(event.currentTarget.dataset.item.name=='正在热映'||event.currentTarget.dataset.item.name=='即将上映'){
+      wx.navigateTo({
+        url: event.currentTarget.dataset.item.url
+      });
+    }else{
+      wx.switchTab({
+        url: event.currentTarget.dataset.item.url
+      });
+    }
+
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -141,7 +156,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getTabBar().init();
   },
 
   /**

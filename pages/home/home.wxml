@@ -18,7 +18,7 @@
     </view>
   </view>
   <view class="menu">
-    <view class="menu-list" wx:for="{{menuBox}}" wx:key="this">
+    <view class="menu-list" wx:for="{{menuBox}}" wx:key="this" bindtap="goMenu" data-item="{{item}}">
       <view class="icon-box">
         <image src="{{item.pic}}" mode="widthFix"></image>
       </view>
@@ -114,5 +114,5 @@
       </view>
     </view>
   </view>
-  <bottom></bottom>
+
 </view>

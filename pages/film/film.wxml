@@ -1,12 +1,12 @@
-<!-- <wxs src="../home/home.wxs" module="fixedName" /> -->
+<wxs src="../home/home.wxs" module="fixedName" />
 <view class="anime">
   <van-tabs active="{{ active }}" bind:change="onChange" color="#4a9899" swipeable="{{swipeable}}" line-width="60px" line-height="2px"
   title-active-color="#4a9899" title-inactive-color="#333">
-    <van-tab title="热门推荐">
+    <van-tab title="正在热映">
       <view class="anime-box">
-        <view class="anime-list clearfix" wx:for="{{recommendBox}}" wx:key="this">
+        <view class="anime-list clearfix" wx:for="{{playingBox}}" wx:key="this">
           <view class="pic-box fl">
-            <image src="{{item.src}}" mode="scaleToFill"></image>
+            <image src="{{fixedName(item.href)}}" mode="scaleToFill"></image>
           </view>
           <view class="detail fl">
             <view class="name">{{item.title}}</view>
@@ -16,18 +16,20 @@
               <text class="num">{{item.score}}</text>
             </view>
             <view class="info">
-              <view class="director">{{item.director}}</view>
-              <view class="actor">{{item.actor}}</view>
+              <view class="region">地区：{{item.region}}</view>
+              <view class="duration">片长：{{item.duration}}</view>
+              <view class="director">导演：{{item.director}}</view>
+              <view class="actor">演员：{{item.actors}}</view>
             </view>
           </view>
         </view>
       </view>
     </van-tab>
-    <van-tab title="评分最高">
+    <van-tab title="即将上映">
       <view class="anime-box">
-        <view class="anime-list clearfix" wx:for="{{rankingBox}}" wx:key="this">
+        <view class="anime-list clearfix" wx:for="{{commingBox}}" wx:key="this">
           <view class="pic-box fl">
-            <image src="{{item.src}}" mode="scaleToFill"></image>
+            <image src="{{fixedName(item.href)}}" mode="scaleToFill"></image>
           </view>
           <view class="detail fl">
             <view class="name">{{item.title}}</view>
@@ -37,12 +39,14 @@
               <text class="num">{{item.score}}</text>
             </view>
             <view class="info">
-              <view class="director">{{item.director}}</view>
-              <view class="actor">{{item.actor}}</view>
+              <view class="time">上映时间:{{item.playTime}}</view>
+              <view class="region">地区：{{item.country}}</view>
+              <view class="type">类型：{{item.type}}</view>
             </view>
           </view>
         </view>
       </view>
     </van-tab>
   </van-tabs>
+  <bottom></bottom>
 </view>

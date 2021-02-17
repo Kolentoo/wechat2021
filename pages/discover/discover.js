@@ -1,23 +1,10 @@
-const app = getApp();
+// pages/anime/discover/discover.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    // 头部个人信息
-    mail:'../../images/mail.jpeg',
-    femail:'../../images/femail.jpeg',
-    name:'Kolento',
-    sex:'1',
-    id:'123',
-    // 社交信息
-    menuBox:[
-      {txt:'关注',src:'../../images/guanzhu.png'},
-      {txt:'粉丝',src:'../../images/fensi.png'},
-      {txt:'动态',src:'../../images/dongtai.png'},
-      {txt:'微博',src:'../../images/weibo.png'},
-    ]
 
   },
 

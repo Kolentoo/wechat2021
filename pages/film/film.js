@@ -1,4 +1,4 @@
-const app = getApp();
+// pages/film/film.js
 Page({
 
   /**
@@ -8,8 +8,8 @@ Page({
     kolento:'https://kolento.club',
     active: 0,
     swipeable:true,
-    recommendBox:[],
-    rankingBox:[],
+    playingBox:[],
+    commingBox:[],
     start1:0,
     num1:20,
     start2:0,
@@ -21,10 +21,10 @@ Page({
   },
 
   // 获取全部热门动画
-  getAll(start,num){
+  getPlaying(start,num){
     let self = this;
     wx.request({
-      url: `${this.data.kolento}/anime/all/${start}/${num}`, 
+      url: `${this.data.kolento}/movie/playing/${start}/${num}`, 
       // data: {},
       header: {
         'content-type': 'application/json' 
@@ -33,7 +33,7 @@ Page({
         console.log(res.data.res);
         if(res.data.flag=='success'){
           self.setData({
-            recommendBox: res.data.res
+            playingBox: res.data.res
           });
         }
       }
@@ -41,10 +41,10 @@ Page({
   },
 
   // 获取评分最高动漫
-  getRanking(start,num){
+  getComming(start,num){
     let self = this;
     wx.request({
-      url: `${this.data.kolento}/anime/ranking/${start}/${num}`, 
+      url: `${this.data.kolento}/movie/comming/${start}/${num}`, 
       // data: {},
       header: {
         'content-type': 'application/json' 
@@ -53,7 +53,7 @@ Page({
         console.log(res.data.res);
         if(res.data.flag=='success'){
           self.setData({
-            rankingBox: res.data.res
+            commingBox: res.data.res
           });
         }
       }
@@ -71,15 +71,15 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    this.getAll(this.data.start1,this.data.num1);
-    this.getRanking(this.data.start2,this.data.num2);
+    this.getPlaying(this.data.start1,this.data.num1);
+    this.getComming(this.data.start2,this.data.num2);
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.getTabBar().init();
+
   },
 
   /**
