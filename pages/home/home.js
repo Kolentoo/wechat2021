@@ -135,6 +135,36 @@ Page({
 
   },
 
+  // 进入动漫详情页
+  goDetail(item){
+    console.log('item',item.currentTarget.dataset.id);
+    wx.navigateTo({
+      url: '../detail/detail?id='+item.currentTarget.dataset.id
+    })
+  },
+
+  // 进入电影详情页
+  goMdetail(item){
+    console.log('item',item.currentTarget.dataset.id);
+    wx.navigateTo({
+      url: '../mdetail/mdetail?id='+item.currentTarget.dataset.id+'&type='+item.currentTarget.dataset.type
+    })
+  },
+
+  // 发现更多动漫
+  moreAnime(){
+    wx.switchTab({
+      url: '../anime/anime'
+    });
+  },
+
+  // 发现更多电影
+  moreFilm(){
+    wx.navigateTo({
+      url: '../film/film'
+    });
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */

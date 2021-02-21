@@ -23,9 +23,10 @@
 .content {padding-bottom: 160rpx;}
 .home-box {margin-top: 10rpx;}
 .home-con {width: 94%;margin:0 auto;}
-.home-list {width: 30.333%;margin:5rpx 1.5%;float: left;}
+.home-list {width: 30.333%;margin:5rpx 1.5% 15rpx;float: left;}
 .img-list {width: 100%;border-radius:10rpx;overflow: hidden;}
 .img-list image{width: 100%;vertical-align: middle;height: 310rpx;}
 .home-list .info {min-height: 100rpx;overflow: hidden;}
-.home-list .name {color:#333;font-size:26rpx;line-height: 26rpx;height: 90rpx;}
-.home-list .score {font-size:26rpx;color:#4a9899;margin-left: 16rpx;}
+.home-list .name {color:#333;font-size:26rpx;line-height: 34rpx;margin-top: 15rpx;height: 70rpx;overflow: hidden;}
+.home-list .score {font-size:22rpx;color:#4a9899;margin-top: 5rpx;margin-bottom: 10rpx;}
+.movie .home-list .name {height: 35rpx;}

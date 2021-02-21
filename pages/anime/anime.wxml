@@ -2,22 +2,21 @@
 <view class="anime">
   <van-tabs active="{{ active }}" bind:change="onChange" color="#4a9899" swipeable="{{swipeable}}" line-width="60px" line-height="2px"
   title-active-color="#4a9899" title-inactive-color="#333">
-    <van-tab title="热门推荐">
+    <van-tab title="评论最多">
       <view class="anime-box">
         <view class="anime-list clearfix" wx:for="{{recommendBox}}" wx:key="this">
           <view class="pic-box fl">
-            <image src="{{item.src}}" mode="scaleToFill"></image>
+            <image src="{{item.bigSrc}}" mode="scaleToFill"></image>
           </view>
           <view class="detail fl">
             <view class="name">{{item.title}}</view>
             <view class="score">
-              <van-rate value="{{ item.score }}" size="{{ 16 }}" allow-half 
-                color="#b5482c" void-color="#b5482c"  void-icon="star" />
-              <text class="num">{{item.score}}</text>
+              <van-rate readonly value="{{ item.score/2 }}" bind:change="onChange" size="{{ 16 }}" allow-half readonly color="#b5482c"  />
+              <text class="num">{{item.score==0?'暂无评分':item.score}}</text>
             </view>
             <view class="info">
-              <view class="director">{{item.director}}</view>
-              <view class="actor">{{item.actor}}</view>
+              <view class="director">{{item.num=='暂无信息'?'':item.num}}</view>
+              <view class="actor">{{item.info=='暂无信息'?'':item.info}}</view>
             </view>
           </view>
         </view>
@@ -27,18 +26,17 @@
       <view class="anime-box">
         <view class="anime-list clearfix" wx:for="{{rankingBox}}" wx:key="this">
           <view class="pic-box fl">
-            <image src="{{item.src}}" mode="scaleToFill"></image>
+            <image src="{{item.bigSrc}}" mode="scaleToFill"></image>
           </view>
           <view class="detail fl">
             <view class="name">{{item.title}}</view>
             <view class="score">
-              <van-rate value="{{ item.score }}" size="{{ 16 }}" allow-half 
-                color="#b5482c" void-color="#b5482c"  void-icon="star" />
-              <text class="num">{{item.score}}</text>
+              <van-rate readonly value="{{ item.score/2 }}" bind:change="onChange" size="{{ 16 }}" allow-half readonly color="#b5482c"  />
+              <text class="num">{{item.score==0?'暂无评分':item.score}}</text>
             </view>
             <view class="info">
-              <view class="director">{{item.director}}</view>
-              <view class="actor">{{item.actor}}</view>
+              <view class="director">{{item.num=='暂无信息'?'':item.num}}</view>
+              <view class="actor">{{item.info=='暂无信息'?'':item.info}}</view>
             </view>
           </view>
         </view>

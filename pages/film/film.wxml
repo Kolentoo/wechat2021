@@ -11,9 +11,8 @@
           <view class="detail fl">
             <view class="name">{{item.title}}</view>
             <view class="score">
-              <van-rate value="{{ item.score }}" size="{{ 16 }}" allow-half 
-                color="#b5482c" void-color="#b5482c"  void-icon="star" />
-              <text class="num">{{item.score}}</text>
+              <van-rate class="star" readonly value="{{ item.score/2 }}"  size="{{ 16 }}" allow-half readonly color="#b5482c"  />
+              <text class="num">{{item.score==0?'暂无评分':item.score}}</text>
             </view>
             <view class="info">
               <view class="region">地区：{{item.region}}</view>
@@ -33,11 +32,11 @@
           </view>
           <view class="detail fl">
             <view class="name">{{item.title}}</view>
-            <view class="score">
+            <!-- <view class="score">
               <van-rate value="{{ item.score }}" size="{{ 16 }}" allow-half 
                 color="#b5482c" void-color="#b5482c"  void-icon="star" />
-              <text class="num">{{item.score}}</text>
-            </view>
+              <text class="num">{{item.score!=0?item.score:'暂无评分'}}</text>
+            </view> -->
             <view class="info">
               <view class="time">上映时间:{{item.playTime}}</view>
               <view class="region">地区：{{item.country}}</view>

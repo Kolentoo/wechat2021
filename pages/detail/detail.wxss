@@ -1,0 +1,21 @@
+.info {background: #4a9899;position: relative;height: 600rpx;}
+.info .bj {position: absolute;top: 0;left: 0;width: 100%;height: 100%;filter:blur(12px);height: 600rpx;}
+.info .pic {width: 100%;height: 100%;position: absolute;top: 50rpx;left: 0;}
+.img-box {width: 50%;margin:0 auto;}
+.img-box .img {width: 100%;height: 500rpx;}
+
+.information {padding:40rpx 30rpx 30rpx;}
+.information .name1 {font-size: 34rpx;font-weight: bold;margin-bottom: 20rpx;}
+.information .name2 {font-size: 26rpx;margin-top: 10rpx;}
+.information .other {font-size: 26rpx;margin-top: 10rpx;}
+.update {font-size: 26rpx;margin-top: 10rpx;}
+.rate {margin-top: 15rpx;}
+.rate-txt {font-size: 26rpx;font-weight: bold;color:#4a9899;}
+.rate .star {position: relative;top: 5rpx;}
+.rate .num {font-size: 26rpx;margin-left: 15rpx;color:#888;}
+.rate .score {color:#4a9899;font-size: 36rpx;font-weight: bold;position: relative;top: 4rpx;}
+.rate .people {font-size: 26rpx;margin-left: 10rpx;}
+
+.desc {margin-top: 30rpx;}
+.desc .h3 {font-size: 30rpx;color:#888;font-weight: bold;}
+.desc .content {font-size: 26rpx;color:#333;margin-top: 15rpx;}

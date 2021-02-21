@@ -1,0 +1,26 @@
+<view class="detail-box">
+  <view class="info">
+    <image class="bj vm" src="{{info.src}}" mode="scaleToFill"></image>
+    <view class="pic">
+      <view class="img-box">
+        <image class="img vm" src="{{info.bigSrc}}" mode="scaleToFill"></image>
+      </view>
+    </view>
+  </view>
+  <view class="information">
+    <view class="name1">{{info.title}}</view>
+    <view class="name2" wx:if="{{info.originName}}">{{info.originName?info.originName:''}}</view>
+    <view class="other">{{info.info}}</view>
+    <view class="update" wx:if="{{info.week!=unll}}">更新时间：{{info.week}}</view>
+    <view class="rate">
+      <text class="rate-txt">口碑评分：</text>
+      <van-rate class="star" readonly value="{{ info.score/2 }}"  size="{{ 16 }}" allow-half readonly color="#b5482c"  />
+      <text class="{{info.score==0?'num':'num score'}}">{{info.score==0?'暂无评分':info.score}}</text>
+      <text class="people">{{info.num}}</text>
+    </view>
+    <view class="desc">
+      <view class="h3">剧集简介</view>
+      <view class="content">{{introduce.content}}</view>
+    </view>
+  </view>
+</view>

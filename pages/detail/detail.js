@@ -1,4 +1,4 @@
-const app = getApp();
+// pages/detail/detail.js
 Page({
 
   /**
@@ -6,55 +6,48 @@ Page({
    */
   data: {
     kolento:'https://kolento.club',
-    active: 0,
-    swipeable:true,
-    recommendBox:[],
-    rankingBox:[],
-    start1:0,
-    num1:20,
-    start2:0,
-    num2:20,
+    id:'',
+    info:{},
+    introduce:{}
   },
 
-  onChange(event) {
-    console.log('event.detail.name',event.detail.name)
-  },
-
-  // 获取全部热门动画
-  getAll(start,num){
+  // 获取详情
+  getDetail(id){
     let self = this;
     wx.request({
-      url: `${this.data.kolento}/anime/popular/${start}/${num}`, 
+      url: `${this.data.kolento}/animeId/${id}`, 
       // data: {},
       header: {
         'content-type': 'application/json' 
       },
       success (res) {
-        console.log(res.data.res);
+        console.log(res.data);
         if(res.data.flag=='success'){
           self.setData({
-            recommendBox: res.data.res
+            info: res.data.res[0]
           });
+          console.log('info',self.data.info);
         }
       }
     })
   },
 
-  // 获取评分最高动漫
-  getRanking(start,num){
+  // 获取介绍
+  getIntroduce(id){
     let self = this;
     wx.request({
-      url: `${this.data.kolento}/anime/ranking/${start}/${num}`, 
+      url: `${this.data.kolento}/detail/${id}`, 
       // data: {},
       header: {
         'content-type': 'application/json' 
       },
       success (res) {
-        console.log(res.data.res);
+        console.log(res.data);
         if(res.data.flag=='success'){
           self.setData({
-            rankingBox: res.data.res
+            introduce: res.data.res[0]
           });
+          console.log('introduce',self.data.introduce);
         }
       }
     })
@@ -64,22 +57,22 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.getDetail(options.id);
+    this.getIntroduce(options.id);
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    this.getAll(this.data.start1,this.data.num1);
-    this.getRanking(this.data.start2,this.data.num2);
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.getTabBar().init();
+
   },
 
   /**

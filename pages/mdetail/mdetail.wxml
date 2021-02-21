@@ -1,0 +1,41 @@
+<view class="detail-box">
+  <view class="info">
+    <image class="bj vm" src="{{info.href}}" mode="scaleToFill"></image>
+    <view class="pic">
+      <view class="img-box">
+        <image class="img vm" src="{{info.href}}" mode="scaleToFill"></image>
+      </view>
+    </view>
+  </view>
+  <view class="information">
+    <view class="name1">{{info.title}}</view>
+    <!-- 正在热映 -->
+    <view class="actors list" wx:if="{{info.actors}}">演员：{{info.actors?info.actors:''}}</view>
+    <view class="director list" wx:if="{{info.director}}">导演：{{info.director?info.director:''}}</view>
+    <view class="region list" wx:if="{{info.region}}">地区: {{info.region?info.region:''}}</view>
+    <view class="duration list" wx:if="{{info.duration}}">时长：{{info.duration?info.duration:''}}</view>
+
+    <!-- 即将上映 -->
+    <view class="actors list" wx:if="{{introduce.actors.length>0}}">演员：
+      <text wx:for="{{introduce.actors}}" wx:key="this">{{item}}</text>
+    </view>
+    <view class="director list" wx:if="{{introduce.directors.length>0}}">导演：
+      <text wx:for="{{introduce.directors}}" wx:key="this">{{item}}</text>
+    </view>
+    <view class="country list" wx:if="{{info.country}}">地区: {{info.country?info.country:''}}</view>
+    <view class="duration list" wx:if="{{introduce.duration}}">时长：{{introduce.duration?introduce.duration:''}}</view>
+    <view class="type list" wx:if="{{introduce.types.length>0}}">类型：
+      <text wx:for="{{introduce.types}}" wx:key="this">{{item}}</text>
+    </view>
+    <view class="rate">
+      <text class="rate-txt">口碑评分：</text>
+      <van-rate class="star" readonly value="{{ info.score/2 }}"  size="{{ 16 }}" allow-half readonly color="#b5482c"  />
+      <text class="{{info.score==0?'num':'num score'}}">{{info.score==0?'暂无评分':info.score}}</text>
+    </view>
+    <view class="desc">
+      <view class="h3">评论精选</view>
+      <view class="content">{{introduce.short_comment.content}}</view>
+    </view>
+  </view>
+</view>
+
