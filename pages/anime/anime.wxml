@@ -24,7 +24,7 @@
     </van-tab>
     <van-tab title="评分最高">
       <view class="anime-box">
-        <view class="anime-list clearfix" wx:for="{{rankingBox}}" wx:key="this">
+        <view class="anime-list clearfix" wx:for="{{rankingBox}}" wx:key="this" bindtap="goDetail" data-id="{{item.id}}">
           <view class="pic-box fl">
             <image src="{{item.bigSrc}}" mode="scaleToFill"></image>
           </view>

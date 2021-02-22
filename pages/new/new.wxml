@@ -1,7 +1,13 @@
 <!-- <wxs src="../home/home.wxs" module="fixedName" /> -->
 <view class="anime">
+  <view class="pick-box">
+    <van-dropdown-menu active-color="#4a9899">
+      <van-dropdown-item value="{{ yearValue }}" options="{{ year }}" bind:change="changeYear"/>
+      <van-dropdown-item value="{{ monthValue }}" options="{{ month }}" bind:change="changeMonth" />
+    </van-dropdown-menu>
+  </view>
   <view class="anime-box">
-    <view class="anime-list clearfix" wx:for="{{recommendBox}}" wx:key="this">
+    <view class="anime-list clearfix" wx:for="{{recommendBox}}" wx:key="this" bindtap="goDetail" data-id="{{item.id}}">
       <view class="pic-box fl">
         <image src="{{item.bigSrc}}" mode="scaleToFill"></image>
       </view>

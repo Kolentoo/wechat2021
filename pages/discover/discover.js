@@ -1,11 +1,71 @@
-// pages/anime/discover/discover.js
+const app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    kolento:'https://kolento.club',
+    active: 0,
+    swipeable:true,
+    recommendBox:[],
+    rankingBox:[],
+    start1:0,
+    num1:20,
+    start2:0,
+    num2:20,
+  },
 
+  onChange(event) {
+    console.log('event.detail.name',event.detail.name)
+  },
+
+  // 获取全部热门动画
+  getAll(start,num){
+    let self = this;
+    wx.request({
+      url: `${this.data.kolento}/anime/popular/${start}/${num}`, 
+      // data: {},
+      header: {
+        'content-type': 'application/json' 
+      },
+      success (res) {
+        console.log(res.data.res);
+        if(res.data.flag=='success'){
+          self.setData({
+            recommendBox: res.data.res
+          });
+        }
+      }
+    })
+  },
+
+  // 获取评分最高动漫
+  getRanking(start,num){
+    let self = this;
+    wx.request({
+      url: `${this.data.kolento}/anime/ranking/${start}/${num}`, 
+      // data: {},
+      header: {
+        'content-type': 'application/json' 
+      },
+      success (res) {
+        console.log(res.data.res);
+        if(res.data.flag=='success'){
+          self.setData({
+            rankingBox: res.data.res
+          });
+        }
+      }
+    })
+  },
+
+  // 进入动漫详情页
+  goDetail(item){
+    console.log('item',item.currentTarget.dataset.id);
+    wx.navigateTo({
+      url: '../detail/detail?id='+item.currentTarget.dataset.id
+    })
   },
 
   /**
@@ -19,7 +79,8 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    this.getAll(this.data.start1,this.data.num1);
+    this.getRanking(this.data.start2,this.data.num2);
   },
 
   /**

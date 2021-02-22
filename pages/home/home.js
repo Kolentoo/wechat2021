@@ -20,8 +20,8 @@ Page({
 
     // 顶部菜单
     menuBox:[
-      {pic:'../../images/icon1.jpg',name:'热门榜单',url:'../anime/anime'},
-      {pic:'../../images/icon2.jpg',name:'新番导视',url:'../discover/discover'},
+      {pic:'../../images/icon1.jpg',name:'近期新番',url:'../anime/anime'},
+      {pic:'../../images/icon2.jpg',name:'新番榜单',url:'../discover/discover'},
       {pic:'../../images/icon3.jpg',name:'正在热映',url:'../film/film'},
       {pic:'../../images/icon4.jpg',name:'即将上映',url:'../film/film'},
     ],
@@ -151,8 +151,15 @@ Page({
     })
   },
 
-  // 发现更多动漫
+  // 发现更多近期动漫
   moreAnime(){
+    wx.switchTab({
+      url: '../new/new'
+    });
+  },
+
+  // 发现更多动漫榜单
+  moreRanking(){
     wx.switchTab({
       url: '../anime/anime'
     });

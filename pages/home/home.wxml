@@ -29,7 +29,7 @@
     <view class="hot">
       <van-cell value="发现更多" icon="fire" is-link bindtap="moreAnime">
         <view slot="title">
-          <view class="van-cell-text">热门推荐</view>
+          <view class="van-cell-text">近期新番</view>
         </view>
       </van-cell>
       <van-loading wx:if="{{hotBox.length==0}}" color="#4a9899" size="20px">接受能量中...</van-loading>
@@ -49,7 +49,7 @@
     </view>
 
     <view class="ranking">
-      <van-cell value="发现更多" icon="gem" is-link bindtap="moreAnime">
+      <van-cell value="发现更多" icon="gem" is-link bindtap="moreRanking">
         <view slot="title">
           <view class="van-cell-text">番剧榜单</view>
         </view>
