@@ -19,7 +19,7 @@ Component({
         "text": "首页"
       },
       {
-        "url": "/pages/anime/anime",
+        "url": "/pages/new/new",
         "icon": "flower-o",
         "text": "番剧"
       },

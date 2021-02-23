@@ -4,6 +4,7 @@
     "pages/home/home",
     "pages/detail/detail",
     "pages/anime/anime",
+    "pages/new/new",
     "pages/my/my",
     "pages/index/index",
     "pages/logs/logs",
@@ -31,7 +32,9 @@
     "van-rate": "@vant/weapp/rate/index",
     "van-grid": "@vant/weapp/grid/index",
     "van-grid-item": "@vant/weapp/grid-item/index",
-    "van-tag": "@vant/weapp/tag/index"
+    "van-tag": "@vant/weapp/tag/index",
+    "van-dropdown-menu": "@vant/weapp/dropdown-menu/index",
+    "van-dropdown-item": "@vant/weapp/dropdown-item/index"
   },
   "tabBar": {
     "custom": true,
@@ -44,7 +47,7 @@
         "text": "首页"
       },
       {
-        "pagePath": "pages/anime/anime",
+        "pagePath": "pages/new/new",
         "text": "番剧"
       },
       {

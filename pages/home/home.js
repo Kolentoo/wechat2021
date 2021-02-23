@@ -20,7 +20,7 @@ Page({
 
     // 顶部菜单
     menuBox:[
-      {pic:'../../images/icon1.jpg',name:'近期新番',url:'../anime/anime'},
+      {pic:'../../images/icon1.jpg',name:'近期新番',url:'../new/new'},
       {pic:'../../images/icon2.jpg',name:'新番榜单',url:'../discover/discover'},
       {pic:'../../images/icon3.jpg',name:'正在热映',url:'../film/film'},
       {pic:'../../images/icon4.jpg',name:'即将上映',url:'../film/film'},
@@ -123,7 +123,7 @@ Page({
   // 首页菜单栏跳转
   goMenu(event){
     console.log('event',event);
-    if(event.currentTarget.dataset.item.name=='正在热映'||event.currentTarget.dataset.item.name=='即将上映'){
+    if(event.currentTarget.dataset.item.name=='正在热映'||event.currentTarget.dataset.item.name=='即将上映'||event.currentTarget.dataset.item.name=='番剧榜单'){
       wx.navigateTo({
         url: event.currentTarget.dataset.item.url
       });
@@ -160,7 +160,7 @@ Page({
 
   // 发现更多动漫榜单
   moreRanking(){
-    wx.switchTab({
+    wx.navigateTo({
       url: '../anime/anime'
     });
   },

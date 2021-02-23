@@ -6,7 +6,7 @@
       <view class="anime-box">
         <view class="anime-list clearfix" wx:for="{{playingBox}}" wx:key="this">
           <view class="pic-box fl">
-            <image src="{{fixedName(item.href)}}" mode="scaleToFill"></image>
+            <image src="{{item.href}}" mode="scaleToFill"></image>
           </view>
           <view class="detail fl">
             <view class="name">{{item.title}}</view>
@@ -28,7 +28,7 @@
       <view class="anime-box">
         <view class="anime-list clearfix" wx:for="{{commingBox}}" wx:key="this">
           <view class="pic-box fl">
-            <image src="{{fixedName(item.href)}}" mode="scaleToFill"></image>
+            <image src="{{item.href}}" mode="scaleToFill"></image>
           </view>
           <view class="detail fl">
             <view class="name">{{item.title}}</view>

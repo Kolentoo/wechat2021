@@ -6,11 +6,15 @@ Page({
    */
   data: {
     // 头部个人信息
+    avatar:'',
     mail:'../../images/mail.jpeg',
     femail:'../../images/femail.jpeg',
     name:'Kolento',
+    country:'',
     sex:'1',
     id:'123',
+    login:'编辑',
+    status:'未登录',
     // 社交信息
     menuBox:[
       {txt:'关注',src:'../../images/guanzhu.png'},
@@ -21,11 +25,38 @@ Page({
 
   },
 
+  bindGetUserInfo (e) {
+    console.log(e.detail.userInfo)
+  },
+
+  login(){
+
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let self = this;
+    wx.getSetting({
+      success (res){
+        if (res.authSetting['scope.userInfo']) {
+          // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+          wx.getUserInfo({
+            success: function(res) {
+              console.log(res.userInfo);
+              self.setData({
+                name:res.userInfo.nickName,
+                sex:res.userInfo.gender,
+                avatar:res.userInfo.avatarUrl,
+                country:res.userInfo.country,
+                status:'已登录'
+              })
+            }
+          })
+        }
+      }
+    })
   },
 
   /**

@@ -81,7 +81,7 @@
         <view class="home-con clearfix">
           <view class="home-list" wx:for="{{playingBox}}" wx:key="this" bindtap="goMdetail" data-id="{{item.id}}" data-type="playing">
             <view class="img-list" >
-              <image src="{{fixedName(item.href)}}" mode="scaleToFill"></image>
+              <image src="{{item.href}}" mode="scaleToFill"></image>
             </view>
             <view class="info">
               <view class="name">{{item.title}}</view>
@@ -103,7 +103,7 @@
         <view class="home-con clearfix">
           <view class="home-list" wx:for="{{commingBox}}" wx:key="this" bindtap="goMdetail" data-id="{{item.id}}" data-type="comming">
             <view class="img-list" >
-              <image src="{{fixedName(item.href)}}" mode="scaleToFill"></image>
+              <image src="{{item.href}}" mode="scaleToFill"></image>
             </view>
             <view class="info">
               <view class="name">{{item.title}}</view>
