@@ -4,7 +4,7 @@
   title-active-color="#4a9899" title-inactive-color="#333">
     <van-tab title="正在热映">
       <view class="anime-box">
-        <view class="anime-list clearfix" wx:for="{{playingBox}}" wx:key="this">
+        <view class="anime-list clearfix" wx:for="{{playingBox}}" wx:key="this" bindtap="goMdetail" data-id="{{item.id}}" data-type="playing">
           <view class="pic-box fl">
             <image src="{{item.href}}" mode="scaleToFill"></image>
           </view>
@@ -26,7 +26,7 @@
     </van-tab>
     <van-tab title="即将上映">
       <view class="anime-box">
-        <view class="anime-list clearfix" wx:for="{{commingBox}}" wx:key="this">
+        <view class="anime-list clearfix" wx:for="{{commingBox}}" wx:key="this" bindtap="goMdetail" data-id="{{item.id}}" data-type="comming">
           <view class="pic-box fl">
             <image src="{{item.href}}" mode="scaleToFill"></image>
           </view>

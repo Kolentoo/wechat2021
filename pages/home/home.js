@@ -38,6 +38,9 @@ Page({
 
   onSearch(e){
     console.log('e',e);
+    wx.navigateTo({
+      url: '../search/search?name='+e.detail
+    })
   },
 
   // 获取热门推荐

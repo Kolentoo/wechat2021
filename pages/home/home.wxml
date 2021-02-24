@@ -2,7 +2,7 @@
 <view class="home">
   <view class="head">
     <view class="search">
-      <van-search value="{{ keywords }}" placeholder="请输入搜索关键词" bind:search="onSearch"  />
+      <van-search value="{{ keywords }}" placeholder="请发射能量~~ 目前只能搜索动漫哦" bind:search="onSearch"  />
     </view>
     <view class="page-section page-section-spacing swiper">
       <swiper indicator-dots="{{indicatorDots}}" circular="{{circular}}"

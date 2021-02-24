@@ -1,7 +1,8 @@
-
 <view class="anime">
+  <view class="tips">总共搜索到 <text class="length">{{searchLength}}</text> 个条目</view>
   <view class="anime-box">
-    <view class="anime-list clearfix" wx:for="{{recommendBox}}" wx:key="this">
+    <van-empty image="search" description="一定是搜索的姿势不对~" wx:if="{{searchLength==0}}"/>
+    <view class="anime-list clearfix" wx:for="{{searchBox}}" wx:key="this" bindtap="goDetail" data-id="{{item.id}}">
       <view class="pic-box fl">
         <image src="{{item.bigSrc}}" mode="scaleToFill"></image>
       </view>

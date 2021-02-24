@@ -1,0 +1,13 @@
+.tips {font-size: 30rpx;padding:25rpx;}
+.length {font-weight: bold;color:#4a9899;margin:0 10rpx;}
+.anime-box {padding:25rpx 25rpx 50rpx;}
+.anime-list {width: 100%;margin-bottom: 25rpx;}
+.anime-list .pic-box {width: 30%;border-radius:10rpx;overflow: hidden;}
+.anime-list .pic-box image {vertical-align: middle;height: 320rpx;width: 250rpx;}
+.anime-list .detail {width: 65%;margin-left: 4%;padding-top: 10rpx;}
+.anime-list .score van-rate {position: relative;top: 4rpx;}
+.anime-list .score .num {font-size: 30rpx;margin-left: 10rpx;}
+.anime-list .name {font-size: 32rpx;margin-bottom: 5rpx;}
+.anime-list .info {margin-top: 10rpx;}
+.anime-list .info .director {color:#888;font-size: 24rpx;margin-bottom: 10rpx;}
+.anime-list .info .actor {color:#888;font-size: 24rpx;}

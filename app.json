@@ -1,14 +1,17 @@
 {
   "pages": [
-    
+    "pages/my/my",
     "pages/home/home",
+    "pages/search/search",
+    
     "pages/detail/detail",
     "pages/anime/anime",
     "pages/new/new",
-    "pages/my/my",
+    
     "pages/index/index",
     "pages/logs/logs",
     "pages/discover/discover"
+    
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -34,7 +37,10 @@
     "van-grid-item": "@vant/weapp/grid-item/index",
     "van-tag": "@vant/weapp/tag/index",
     "van-dropdown-menu": "@vant/weapp/dropdown-menu/index",
-    "van-dropdown-item": "@vant/weapp/dropdown-item/index"
+    "van-dropdown-item": "@vant/weapp/dropdown-item/index",
+    "van-empty": "@vant/weapp/empty/index",
+    "van-field": "@vant/weapp/field/index",
+    "van-share-sheet": "@vant/weapp/share-sheet/index"
   },
   "tabBar": {
     "custom": true,

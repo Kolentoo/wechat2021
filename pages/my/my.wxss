@@ -1,5 +1,5 @@
 .my {background: rgb(247,248,250);}
-.login {width: 100%;display:flex;justify-content: center;align-items: center;margin-top: 50rpx;}
+.login {width: 100%;display:flex;justify-content: center;align-items: center;padding: 60rpx 0 30rpx 0;}
 .wx-btn {background: none!important;}
 .wx-btn::after {border: none;}
 .van-button--round {background: #4a9899!important;border-color:#4a9899!important;}

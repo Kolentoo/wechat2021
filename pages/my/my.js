@@ -21,7 +21,21 @@ Page({
       {txt:'粉丝',src:'../../images/fensi.png'},
       {txt:'动态',src:'../../images/dongtai.png'},
       {txt:'微博',src:'../../images/weibo.png'},
-    ]
+    ],
+    // 分享
+    showShare: false,
+    options: [
+      [
+        { name: '微信', icon: 'wechat' },
+        { name: '微博', icon: 'weibo' },
+        { name: 'QQ', icon: 'qq' },
+      ],
+      [
+        { name: '复制链接', icon: 'link' },
+        { name: '分享海报', icon: 'poster' },
+        { name: '二维码', icon: 'qrcode' },
+      ],
+    ],
 
   },
 
@@ -31,6 +45,33 @@ Page({
 
   login(){
 
+  },
+
+  weibo(){
+    wx.navigateToMiniProgram({
+      appId: 'wx9074de28009e1111',
+      path: 'page/index/index?id=123',
+      // extraData: {
+      //   foo: 'bar'
+      // },
+      envVersion: 'develop',
+      success(res) {
+        // 打开成功
+      }
+    })
+  },
+
+  share(event) {
+    this.setData({ showShare: true });
+  },
+
+  onClose() {
+    this.setData({ showShare: false });
+  },
+
+  onSelect(event) {
+    Toast(event.detail.name);
+    this.onClose();
   },
 
   /**

@@ -48,7 +48,7 @@
         <text class="van-cell-text">反馈留言</text>
       </view>
     </van-cell>
-    <van-cell value="" is-link>
+    <van-cell value="" is-link bindtap="weibo">
       <view slot="title">
         <text class="van-cell-text">关注微博</text>
       </view>
@@ -58,10 +58,17 @@
         <text class="van-cell-text">关于</text>
       </view>
     </van-cell>
-    <van-cell value="" is-link>
+    <van-cell value="" is-link bind:click="share">
       <view slot="title">
         <text class="van-cell-text">分享</text>
       </view>
     </van-cell>
   </view>
+  <van-share-sheet
+    show="{{ showShare }}"
+    title="立即分享给好友"
+    options="{{ options }}"
+    bind:select="onSelect"
+    bind:close="onClose"
+  />
 </view>
