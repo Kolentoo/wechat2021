@@ -1,16 +1,16 @@
 {
   "pages": [
+    "pages/home/home",
+    "pages/advice/advice",
     "pages/my/my",
     "pages/message/message",
     "pages/new/new",
-    "pages/home/home",
     "pages/search/search",
     "pages/detail/detail",
     "pages/anime/anime",
     "pages/index/index",
     "pages/logs/logs",
     "pages/discover/discover",
-    "pages/advice/advice",
     "pages/about/about"
   ],
   "window": {

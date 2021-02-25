@@ -74,6 +74,24 @@ Page({
     this.onClose();
   },
 
+  goMessage(){
+    wx.navigateTo({
+      url: '../message/message'
+    });
+  },
+
+  goAdvice(){
+    wx.navigateTo({
+      url: '../advice/advice'
+    });
+  },
+
+  goAbout(){
+    wx.navigateTo({
+      url: '../about/about'
+    });
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */

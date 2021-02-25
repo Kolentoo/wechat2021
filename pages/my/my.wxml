@@ -37,13 +37,13 @@
         <van-tag type="danger" class="tag">收藏</van-tag>
       </view>
     </van-cell> -->
-    <van-cell value="" is-link>
+    <van-cell value="" is-link bindtap="goMessage">
       <view slot="title">
         <text class="van-cell-text">消息</text>
         <van-tag type="danger" class="tag">99</van-tag>
       </view>
     </van-cell>
-    <van-cell value="" is-link>
+    <van-cell value="" is-link bindtap="goAdvice">
       <view slot="title">
         <text class="van-cell-text">反馈留言</text>
       </view>
@@ -53,7 +53,7 @@
         <text class="van-cell-text">关注微博</text>
       </view>
     </van-cell>
-    <van-cell value="" is-link>
+    <van-cell value="" is-link bindtap="goAbout">
       <view slot="title">
         <text class="van-cell-text">关于</text>
       </view>
