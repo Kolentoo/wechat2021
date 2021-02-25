@@ -21,6 +21,9 @@
           </view>
         </view>
       </view>
+      <view class="loading"  wx:if="{{pending1}}">
+        <van-loading color="#4a9899" size="20px">接收能量中...</van-loading>
+      </view>
     </van-tab>
     <van-tab title="评分最高">
       <view class="anime-box">
@@ -40,6 +43,9 @@
             </view>
           </view>
         </view>
+      </view>
+      <view class="loading"  wx:if="{{pending2}}">
+        <van-loading color="#4a9899" size="20px">接收能量中...</van-loading>
       </view>
     </van-tab>
   </van-tabs>

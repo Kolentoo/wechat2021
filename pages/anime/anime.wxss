@@ -11,3 +11,5 @@
 .anime-list .info {margin-top: 10rpx;}
 .anime-list .info .director {color:#888;font-size: 24rpx;margin-bottom: 10rpx;}
 .anime-list .info .actor {color:#888;font-size: 24rpx;}
+
+.loading {width: 100%;display: flex;justify-content: center;align-items: center;padding-top: 50rpx;}

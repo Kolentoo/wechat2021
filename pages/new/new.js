@@ -27,13 +27,18 @@ Page({
     recommendBox:[],
     start1:0,
     num1:20,
+    pending:true,
+    finished:false,
   },
 
   // 按照年份和月份获取动漫
-  getAll(year,month){
+  getAll(year,month,start,end){
     let self = this;
+    self.setData({
+      pending:true,
+    });
     wx.request({
-      url: `${this.data.kolento}/anime/exact/${year}/${month}`, 
+      url: `${this.data.kolento}/anime/exact/${year}/${month}/${start}/${end}`, 
       // data: {},
       header: {
         'content-type': 'application/json' 
@@ -41,8 +46,14 @@ Page({
       success (res) {
         console.log(res.data.res);
         if(res.data.flag=='success'){
+          if(res.data.res.length<20){
+            self.setData({
+              finished:true
+            })
+          }
           self.setData({
-            recommendBox: res.data.res
+            recommendBox: self.data.recommendBox.concat(res.data.res),
+            pending:false,
           });
         }
       }
@@ -50,19 +61,25 @@ Page({
   },
 
   changeYear(e){
+    this.setData({
+      start1:0
+    });
     console.log(e.detail);
     this.setData({
       yearValue:e.detail
     })
-    this.getAll(e.detail,this.data.monthValue);
+    this.getAll(e.detail,this.data.monthValue,this.data.start1,this.data.num1);
   },
 
   changeMonth(e){
+    this.setData({
+      start1:0
+    });
     console.log(e.detail);
     this.setData({
       monthValue:e.detail
     })
-    this.getAll(this.data.yearValue,e.detail);
+    this.getAll(this.data.yearValue,e.detail,this.data.start1,this.data.num1);
   },
 
   // 进入动漫详情页
@@ -84,7 +101,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    this.getAll(this.data.yearValue,this.data.monthValue);
+    this.getAll(this.data.yearValue,this.data.monthValue,this.data.start1,this.data.num1);
   },
 
   /**
@@ -119,7 +136,17 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    console.log('页面滚动到底部');
+    if(!this.data.finished){
+      if(!this.data.pending){
+        this.setData({
+          start1:this.data.start1+20
+        });
+        this.getAll(this.data.yearValue,this.data.monthValue,this.data.start1,this.data.num1);
+      }else{
+        console.log('数据还没加载完');
+      }
+    }
   },
 
   /**

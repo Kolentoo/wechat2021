@@ -14,6 +14,10 @@ Page({
     num1:20,
     start2:0,
     num2:20,
+    pending1:true,
+    pending2:true,
+    finished1:false,
+    finished2:false,
   },
 
   onChange(event) {
@@ -23,6 +27,9 @@ Page({
   // 获取全部热门动画
   getAll(start,num){
     let self = this;
+    self.setData({
+      pending1:true,
+    });
     wx.request({
       url: `${this.data.kolento}/anime/popular/${start}/${num}`, 
       // data: {},
@@ -32,8 +39,14 @@ Page({
       success (res) {
         console.log(res.data.res);
         if(res.data.flag=='success'){
+          if(res.data.res.length<20){
+            self.setData({
+              finished1:true
+            });
+          }
           self.setData({
-            recommendBox: res.data.res
+            recommendBox: self.data.recommendBox.concat(res.data.res),
+            pending1:false,
           });
         }
       }
@@ -43,6 +56,9 @@ Page({
   // 获取评分最高动漫
   getRanking(start,num){
     let self = this;
+    self.setData({
+      pending2:true,
+    });
     wx.request({
       url: `${this.data.kolento}/anime/ranking/${start}/${num}`, 
       // data: {},
@@ -52,8 +68,14 @@ Page({
       success (res) {
         console.log(res.data.res);
         if(res.data.flag=='success'){
+          if(res.data.res.length<20){
+            self.setData({
+              finished2:true
+            });
+          }
           self.setData({
-            rankingBox: res.data.res
+            rankingBox: self.data.rankingBox.concat(res.data.res),
+            pending2:false,
           });
         }
       }
@@ -87,7 +109,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.getTabBar().init();
+    // this.getTabBar().init();
   },
 
   /**
@@ -115,7 +137,29 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    if(this.data.active==0){
+      if(!this.data.finished1){
+        if(!this.data.pending1){
+          this.setData({
+            start1:this.data.start1+20
+          });
+          this.getAll(this.data.start1,this.data.num1);
+        }else{
+          console.log('数据还没加载完');
+        }
+      }
+    }else{
+      if(!this.data.finished2){
+        if(!this.data.pending2){
+          this.setData({
+            start1:this.data.start2+20
+          });
+          this.getRanking(this.data.start2,this.data.num2);
+        }else{
+          console.log('数据还没加载完');
+        }
+      }
+    }
   },
 
   /**

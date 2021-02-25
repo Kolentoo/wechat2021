@@ -23,5 +23,8 @@
         </view>
       </view>
     </view>
+    <view class="loading"  wx:if="{{pending}}">
+      <van-loading color="#4a9899" size="20px">接收能量中...</van-loading>
+    </view>
   </view>
 </view>

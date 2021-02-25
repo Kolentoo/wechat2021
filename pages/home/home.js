@@ -21,7 +21,7 @@ Page({
     // 顶部菜单
     menuBox:[
       {pic:'../../images/icon1.jpg',name:'近期新番',url:'../new/new'},
-      {pic:'../../images/icon2.jpg',name:'新番榜单',url:'../discover/discover'},
+      {pic:'../../images/icon2.jpg',name:'新番榜单',url:'../anime/anime'},
       {pic:'../../images/icon3.jpg',name:'正在热映',url:'../film/film'},
       {pic:'../../images/icon4.jpg',name:'即将上映',url:'../film/film'},
     ],
@@ -44,10 +44,10 @@ Page({
   },
 
   // 获取热门推荐
-  getHot(start,num){
+  getHot(start,num,year,month){
     let self = this;
     wx.request({
-      url: `${this.data.kolento}/anime/all/${start}/${num}`, 
+      url: `${this.data.kolento}/anime/exact/${year}/${month}/${start}/${num}`, 
       // data: {},
       header: {
         'content-type': 'application/json' 
@@ -186,7 +186,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    this.getHot(0,6);
+    this.getHot(0,6,2021,1);
     this.getRanking(0,6);
     this.getPlaying(0,6);
     this.getComming(0,6);
