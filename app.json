@@ -1,8 +1,10 @@
 {
   "pages": [
     "pages/home/home",
-    "pages/advice/advice",
     "pages/my/my",
+    
+    "pages/advice/advice",
+    
     "pages/message/message",
     "pages/new/new",
     "pages/search/search",
@@ -41,7 +43,9 @@
     "van-empty": "@vant/weapp/empty/index",
     "van-field": "@vant/weapp/field/index",
     "van-share-sheet": "@vant/weapp/share-sheet/index",
-    "van-panel": "@vant/weapp/panel/index"
+    "van-panel": "@vant/weapp/panel/index",
+    "van-action-sheet": "@vant/weapp/action-sheet/index",
+    "van-toast": "@vant/weapp/toast/index"
   },
   "tabBar": {
     "custom": true,

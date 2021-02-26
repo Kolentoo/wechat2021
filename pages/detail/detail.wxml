@@ -20,7 +20,14 @@
     </view>
     <view class="desc">
       <view class="h3">剧集简介</view>
-      <view class="content">{{introduce.content}}</view>
+      <view class="content">{{introduce.content?introduce.content:'暂无简介'}}</view>
     </view>
   </view>
+  <view class="bottom">
+    <view class="btn-group">
+      <van-button class="btn" icon="like" type="info" size="small" bindtap="like">关注</van-button>
+      <van-button class="btn" icon="comment" type="info" size="small" bindtap="comment">点评</van-button>
+    </view>
+  </view>
+  <van-toast id="van-toast" />
 </view>

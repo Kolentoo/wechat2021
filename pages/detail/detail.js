@@ -1,4 +1,5 @@
 // pages/detail/detail.js
+import Toast from '@vant/weapp/toast/toast';
 Page({
 
   /**
@@ -51,6 +52,30 @@ Page({
         }
       }
     })
+  },
+
+  like(animeId,id){
+    console.log('关注');
+    Toast('收藏成功');
+    let self = this;
+    // wx.request({
+    //   url: `${this.data.kolento}/addAnime/${animeId}/${id}`, 
+    //   // data: {},
+    //   header: {
+    //     'content-type': 'application/json' 
+    //   },
+    //   success (res) {
+    //     console.log(res.data);
+    //     if(res.data.flag=='success'){
+    //       Toast('收藏成功');
+    //     }
+    //   }
+    // })
+  },
+
+  comment(){
+    console.log('点评');
+    Toast('开发中~~');
   },
 
   /**

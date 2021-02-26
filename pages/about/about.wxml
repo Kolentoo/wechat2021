@@ -1,2 +1,7 @@
-<!--pages/about/about.wxml-->
-<text>pages/about/about.wxml</text>
+<view class="about-box">
+  <van-panel title="关于 kilikili" desc="{{desc1}}">
+  </van-panel>
+
+  <van-panel title="关于 K o l e n t o" desc="{{desc2}}">
+  </van-panel>
+</view>

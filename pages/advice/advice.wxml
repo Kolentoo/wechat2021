@@ -8,7 +8,7 @@
     </view>
   </van-cell>
   <view class="advice-box">
-    <view class="advice-list clearfix" wx:for="{{adviceBox}}">
+    <view class="advice-list clearfix" wx:for="{{adviceBox}}" wx:key="this">
       <view class="avatar">
         <image mode="scaleToFill" src="{{item.avatar}}" />
       </view>

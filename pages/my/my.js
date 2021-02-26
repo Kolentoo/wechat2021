@@ -1,10 +1,12 @@
 const app = getApp();
+import Toast from '@vant/weapp/toast/toast';
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    kolento:'https://kolento.club',
     // 头部个人信息
     avatar:'',
     mail:'../../images/mail.jpeg',
@@ -26,31 +28,63 @@ Page({
     showShare: false,
     options: [
       [
-        { name: '微信', icon: 'wechat' },
+        { name: '微信', icon: 'wechat' ,openType: 'share'},
         { name: '微博', icon: 'weibo' },
         { name: 'QQ', icon: 'qq' },
-      ],
-      [
-        { name: '复制链接', icon: 'link' },
-        { name: '分享海报', icon: 'poster' },
-        { name: '二维码', icon: 'qrcode' },
-      ],
+      ]
     ],
+    show:false,
 
   },
 
   bindGetUserInfo (e) {
-    console.log(e.detail.userInfo)
+    console.log('授权',e.detail.userInfo);
+    if(e.detail.userInfo!=undefined){
+
+    }
   },
 
   login(){
 
   },
 
+  edit(){
+    this.setData({
+      show:true
+    });
+  },
+
+  closeEdit(){
+    this.setData({
+      show:false
+    });
+  },
+
+  changeName(){
+    console.log('修改名字');
+  },
+
+  addUser(){
+    let self = this;
+    wx.request({
+      url: `${this.data.kolento}/addUser/${name}/${sex}/${country}`, 
+      // data: {},
+      header: {
+        'content-type': 'application/json' 
+      },
+      success (res) {
+        console.log(res.data.res);
+        if(res.data.flag=='success'){
+          Toast('欢迎~');
+        }
+      }
+    })
+  },
+
   weibo(){
     wx.navigateToMiniProgram({
       appId: 'wx9074de28009e1111',
-      path: 'page/index/index?id=123',
+      path: 'pages/profile/profile.html?nickname=XKolento&objectUid=1921492471',
       // extraData: {
       //   foo: 'bar'
       // },
@@ -70,7 +104,9 @@ Page({
   },
 
   onSelect(event) {
-    Toast(event.detail.name);
+    if(event.detail.name=='微博'||event.detail.name=='QQ'){
+      Toast('暂不支持分享到'+event.detail.name);
+    }
     this.onClose();
   },
 

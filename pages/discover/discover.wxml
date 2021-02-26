@@ -1,6 +1,7 @@
 
 <view class="anime">
-  <view class="anime-box">
+  <van-empty description="快去收藏吧~" />
+  <!-- <view class="anime-box">
     <view class="anime-list clearfix" wx:for="{{recommendBox}}" wx:key="this">
       <view class="pic-box fl">
         <image src="{{item.bigSrc}}" mode="scaleToFill"></image>
@@ -17,5 +18,5 @@
         </view>
       </view>
     </view>
-  </view>
+  </view> -->
 </view>

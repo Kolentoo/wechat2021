@@ -4,10 +4,9 @@
       <button open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" class="wx-btn">
         <van-button type="info" round bindtap="login">戳我登录~</van-button>
       </button>
-      
-
+    
     </view>
-    <van-cell value="{{login}}" icon="" is-link center wx:if="{{status=='已登录'}}">
+    <van-cell value="{{login}}" icon="" is-link center wx:if="{{status=='已登录'}}" bindtap="edit">
       <view slot="title" class="info-con clearfix" >
         <view class="van-cell-text avatar fl" >
           <image src="{{avatar}}" mode="widthFix"></image>
@@ -15,7 +14,7 @@
         <view class="name-box fl" >
           <view class="name">昵称: {{name}}</view>
           <view class="other">
-            <text class="sex">性别: {{sex==1?'男':'女'}}</text>
+            <text class="sex">性别: {{sex==1?'绅士':'仙女'}}</text>
             <text class="country">国家: {{country}}</text>
           </view>
         </view>
@@ -71,4 +70,22 @@
     bind:select="onSelect"
     bind:close="onClose"
   />
+  <van-toast id="van-toast" />
+  <van-action-sheet show="{{ show }}" title="编辑信息" bind:close="closeEdit">
+    <view class="edit-box">
+      <van-cell-group>
+        <van-field
+          value="{{ sms }}"
+          center
+          clearable
+          label="昵称"
+          placeholder="请输入您的大名~"
+          border="{{ false }}"
+          use-button-slot >
+          <van-button slot="button" size="small" type="info" bindtap="changeName">确定</van-button
+          >
+        </van-field>
+      </van-cell-group>
+    </view>
+  </van-action-sheet>
 </view>

@@ -18,3 +18,5 @@
 .setting .tag {margin-left: 5rpx;}
 .setting {margin-top: 30rpx;}
 .setting .van-cell {padding:20px 16px!important;}
+.edit-box {padding-bottom: 100rpx;}
+.van-button--info {background: #4a9899!important;border-radius:10rpx!important;border-color:#4a9899!important;}
