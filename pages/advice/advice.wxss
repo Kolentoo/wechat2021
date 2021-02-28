@@ -2,11 +2,13 @@
 .van-cell__title {width: 100%;}
 
 .advice-box {padding:25rpx;}
-.advice-list {display:flex;margin-bottom: 30rpx;}
+.advice-content {margin-top: 30rpx;}
+.advice-list {display:flex;margin-bottom: 40rpx;}
 .avatar {width: 100rpx;height: 100rpx;overflow: hidden;border-radius:50%;}
 .avatar image{width: 100%;vertical-align: middle;height: 100%;}
 
-.detail {width: 70%;margin-left: 15rpx;}
+.detail {width: 90%;margin-left: 15rpx;}
 .detail .name {font-size: 28rpx;color:#333;margin-bottom: 15rpx;}
 .detail .content {font-size: 24rpx;color:#333;margin-bottom: 15rpx;}
 .detail .time {color:#888;font-size: 24rpx;}
+

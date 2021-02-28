@@ -66,7 +66,8 @@ Page({
     });
     console.log(e.detail);
     this.setData({
-      yearValue:e.detail
+      yearValue:e.detail,
+      recommendBox:[],
     })
     this.getAll(e.detail,this.data.monthValue,this.data.start1,this.data.num1);
   },
@@ -77,7 +78,8 @@ Page({
     });
     console.log(e.detail);
     this.setData({
-      monthValue:e.detail
+      monthValue:e.detail,
+      recommendBox:[],
     })
     this.getAll(this.data.yearValue,e.detail,this.data.start1,this.data.num1);
   },

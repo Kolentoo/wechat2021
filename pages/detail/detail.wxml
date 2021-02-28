@@ -25,9 +25,29 @@
   </view>
   <view class="bottom">
     <view class="btn-group">
-      <van-button class="btn" icon="like" type="info" size="small" bindtap="like">关注</van-button>
+      <van-button class="btn" icon="{{liked?'like':'like-o'}}" type="info" size="small" bindtap="like">{{liked?'已关注':'关注'}}</van-button>
       <van-button class="btn" icon="comment" type="info" size="small" bindtap="comment">点评</van-button>
     </view>
   </view>
+  <van-action-sheet class="pop-box" show="{{ commentShow }}" title="点评" bind:close="closePop">
+    <view class="star-box">
+      <van-rate value="{{ score }}"/>
+      <text class="score-value">{{score}}</text>
+    </view>
+    <view class="text">
+      <van-cell-group>
+        <van-field
+          class="text-box"
+          value="{{ text }}"
+          placeholder="说点什么吧..."
+          placeholder-style="color:'#888'"
+          border="{{ true }}"
+          type="textarea"
+          size="large"
+        />
+        <van-button class="btn submit-btn" icon="award-o" type="info" size="small" bindtap="submitInfo">发射</van-button>
+    </van-cell-group>
+    </view>
+  </van-action-sheet>
   <van-toast id="van-toast" />
 </view>

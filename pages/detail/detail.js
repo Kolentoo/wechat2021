@@ -9,7 +9,12 @@ Page({
     kolento:'https://kolento.club',
     id:'',
     info:{},
-    introduce:{}
+    introduce:{},
+
+    // 点评相关
+    commentShow:false,
+    score:10,
+    text:'',
   },
 
   // 获取详情
@@ -58,30 +63,42 @@ Page({
     console.log('关注');
     Toast('收藏成功');
     let self = this;
-    // wx.request({
-    //   url: `${this.data.kolento}/addAnime/${animeId}/${id}`, 
-    //   // data: {},
-    //   header: {
-    //     'content-type': 'application/json' 
-    //   },
-    //   success (res) {
-    //     console.log(res.data);
-    //     if(res.data.flag=='success'){
-    //       Toast('收藏成功');
-    //     }
-    //   }
-    // })
+    wx.request({
+      url: `${this.data.kolento}/addAnime/${animeId}/${id}`, 
+      // data: {},
+      header: {
+        'content-type': 'application/json' 
+      },
+      success (res) {
+        console.log(res.data);
+        if(res.data.flag=='success'){
+          Toast('收藏成功');
+        }
+      }
+    })
+  },
+
+  closePop(){
+    this.setData({
+      commentShow:false
+    });
   },
 
   comment(){
     console.log('点评');
     Toast('开发中~~');
+    this.setData({
+      commentShow:true
+    });
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+      id:options.id
+    });
     this.getDetail(options.id);
     this.getIntroduce(options.id);
   },

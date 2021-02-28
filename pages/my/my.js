@@ -84,7 +84,7 @@ Page({
   weibo(){
     wx.navigateToMiniProgram({
       appId: 'wx9074de28009e1111',
-      path: 'pages/profile/profile.html?nickname=XKolento&objectUid=1921492471',
+      path: 'pages/profile/profile?nickname=XKolento&objectUid=1921492471',
       // extraData: {
       //   foo: 'bar'
       // },
@@ -146,7 +146,28 @@ Page({
                 avatar:res.userInfo.avatarUrl,
                 country:res.userInfo.country,
                 status:'已登录'
-              })
+              });
+              if(self.data.status!=='已登录'){
+
+              }else{
+                let url = res.userInfo.avatarUrl.split('https://')[1];
+                wx.request({
+                  url: `${self.data.kolento}/addUser/1/2/3/1`, 
+                  // data: {},
+                  header: {
+                    'content-type': 'application/json' 
+                  },
+                  success (res) {
+                    console.log(res.data);
+                    if(res.data.flag=='success'){
+                      Toast('欢迎~');
+                    }
+                  }
+                })
+              }
+
+
+              
             }
           })
         }
