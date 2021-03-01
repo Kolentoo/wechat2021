@@ -6,7 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    kolento:'https://kolento.club',
+    // kolento:'https://kolento.club',
+    kolento:'http://127.0.0.1',
     // 头部个人信息
     avatar:'',
     mail:'../../images/mail.jpeg',
@@ -15,7 +16,7 @@ Page({
     country:'',
     sex:'1',
     id:'123',
-    login:'编辑',
+    login:'编辑', 
     status:'未登录',
     // 社交信息
     menuBox:[
@@ -40,7 +41,52 @@ Page({
   bindGetUserInfo (e) {
     console.log('授权',e.detail.userInfo);
     if(e.detail.userInfo!=undefined){
-
+      let self = this;
+      wx.getSetting({
+        success (res){
+          if (res.authSetting['scope.userInfo']) {
+            // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+            wx.getUserInfo({
+              success: function(res) {
+                console.log(res.userInfo);
+                self.setData({
+                  name:res.userInfo.nickName,
+                  sex:res.userInfo.gender,
+                  avatar:res.userInfo.avatarUrl,
+                  country:res.userInfo.country,
+                  status:'已登录'
+                },function(){
+                  console.log('self.data.status',self.data.status)
+                  wx.request({
+                    url: `${self.data.kolento}/addUser`, 
+                    method:'post',
+                    data: {
+                      name:res.userInfo.nickName,
+                      sex:res.userInfo.gender,
+                      country:res.userInfo.country,
+                      avatar:'hahaha'
+                      // avatar:res.userInfo.avatarUrl
+                      // name:'K o l e n t o',
+                      // sex:2,
+                      // country:3,
+                      // avatar:4
+                    },
+                    header: {
+                      'content-type': 'application/json' 
+                    },
+                    success (res) {
+                      console.log(res.data);
+                      if(res.data.flag=='success'){
+                        Toast('欢迎~');
+                      }
+                    }
+                  })
+                });
+              }
+            })
+          }
+        }
+      })
     }
   },
 
@@ -62,23 +108,6 @@ Page({
 
   changeName(){
     console.log('修改名字');
-  },
-
-  addUser(){
-    let self = this;
-    wx.request({
-      url: `${this.data.kolento}/addUser/${name}/${sex}/${country}`, 
-      // data: {},
-      header: {
-        'content-type': 'application/json' 
-      },
-      success (res) {
-        console.log(res.data.res);
-        if(res.data.flag=='success'){
-          Toast('欢迎~');
-        }
-      }
-    })
   },
 
   weibo(){
@@ -127,7 +156,7 @@ Page({
       url: '../about/about'
     });
   },
-
+ 
   /**
    * 生命周期函数--监听页面加载
    */
@@ -147,24 +176,7 @@ Page({
                 country:res.userInfo.country,
                 status:'已登录'
               });
-              if(self.data.status!=='已登录'){
 
-              }else{
-                let url = res.userInfo.avatarUrl.split('https://')[1];
-                wx.request({
-                  url: `${self.data.kolento}/addUser/1/2/3/1`, 
-                  // data: {},
-                  header: {
-                    'content-type': 'application/json' 
-                  },
-                  success (res) {
-                    console.log(res.data);
-                    if(res.data.flag=='success'){
-                      Toast('欢迎~');
-                    }
-                  }
-                })
-              }
 
 
               
