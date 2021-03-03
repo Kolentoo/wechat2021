@@ -1,10 +1,11 @@
 {
   "pages": [
+    "pages/new/new",
     "pages/my/my",
     "pages/home/home",
     "pages/advice/advice",
     "pages/message/message",
-    "pages/new/new",
+    
     "pages/search/search",
     "pages/detail/detail",
     "pages/anime/anime",

@@ -6,10 +6,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-    kolento:'https://kolento.club',
+    // kolento:'https://kolento.club',
+    kolento:'http://127.0.0.1',
     id:'',
+    userId:'',
     info:{},
     introduce:{},
+    liked:'no',
 
     // 点评相关
     commentShow:false,
@@ -60,11 +63,9 @@ Page({
   },
 
   like(animeId,id){
-    console.log('关注');
-    Toast('收藏成功');
     let self = this;
     wx.request({
-      url: `${this.data.kolento}/addAnime/${animeId}/${id}`, 
+      url: `${this.data.kolento}/addAnime/${self.data.id}/${self.data.userId}/${self.data.liked}`, 
       // data: {},
       header: {
         'content-type': 'application/json' 
@@ -72,7 +73,19 @@ Page({
       success (res) {
         console.log(res.data);
         if(res.data.flag=='success'){
-          Toast('收藏成功');
+          if(self.data.liked=='yes'){
+            self.setData({
+              liked:'no'
+            });
+            Toast('取消成功');
+          }else{
+            self.setData({
+              liked:'yes'
+            });
+            Toast('收藏成功');
+          }
+
+          
         }
       }
     })
@@ -96,6 +109,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let self = this;
+    wx.getStorage({
+      key: 'id',
+      success (res) {
+        console.log('获取用户id',res.data);
+        if(res.data){
+          self.setData({
+            userId:res.data
+          });
+        }
+      }
+    })
     this.setData({
       id:options.id
     });

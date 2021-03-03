@@ -1,7 +1,7 @@
 const app = getApp();
 import Toast from '@vant/weapp/toast/toast';
 Page({
-
+ 
   /**
    * 页面的初始数据
    */
@@ -16,8 +16,10 @@ Page({
     country:'',
     sex:'1',
     id:'123',
-    login:'编辑', 
+    login:'', 
     status:'未登录',
+    openid:'',
+    person:'new',
     // 社交信息
     menuBox:[
       {txt:'关注',src:'../../images/guanzhu.png'},
@@ -56,31 +58,38 @@ Page({
                   country:res.userInfo.country,
                   status:'已登录'
                 },function(){
-                  console.log('self.data.status',self.data.status)
-                  wx.request({
-                    url: `${self.data.kolento}/addUser`, 
-                    method:'post',
-                    data: {
-                      name:res.userInfo.nickName,
-                      sex:res.userInfo.gender,
-                      country:res.userInfo.country,
-                      avatar:'hahaha'
-                      // avatar:res.userInfo.avatarUrl
-                      // name:'K o l e n t o',
-                      // sex:2,
-                      // country:3,
-                      // avatar:4
-                    },
-                    header: {
-                      'content-type': 'application/json' 
-                    },
-                    success (res) {
-                      console.log(res.data);
-                      if(res.data.flag=='success'){
-                        Toast('欢迎~');
+                  console.log('self.data.status',self.data.status);
+                  if(self.data.person=='new'){
+                    wx.request({
+                      url: `${self.data.kolento}/addUser`, 
+                      method:'post',
+                      data: {
+                        name:res.userInfo.nickName,
+                        sex:res.userInfo.gender,
+                        country:res.userInfo.country,
+                        avatar:res.userInfo.avatarUrl,
+                        openid:self.data.openid
+                      },
+                      header: {
+                        'content-type': 'application/json' 
+                      },
+                      success (res) {
+                        console.log(res.data);
+                        console.log(res.data.res2[0].id);
+                        wx.setStorage({
+                          key:"id",
+                          data:res.data.res2[0].id
+                        });
+                        if(res.data.flag=='success'){
+                          Toast('欢迎~');
+                        }
                       }
-                    }
-                  })
+                    });
+                  }else{
+                    Toast('欢迎~');
+                    console.log('数据库中已经有您的资料');
+                  }
+
                 });
               }
             })
@@ -95,9 +104,9 @@ Page({
   },
 
   edit(){
-    this.setData({
-      show:true
-    });
+    // this.setData({
+    //   show:true
+    // });
   },
 
   closeEdit(){
@@ -162,6 +171,55 @@ Page({
    */
   onLoad: function (options) {
     let self = this;
+    wx.login({
+      success (res) {
+        console.log('登录res',res);
+        if (res.code) {
+          //发起网络请求
+          wx.request({ 
+            url: `${self.data.kolento}/login/${res.code}`, 
+            success (res) {
+              if(res.data.flag=='success'){
+                console.log(res.data);
+                self.setData({
+                  openid:res.data.res.openid
+                });
+                wx.setStorage({
+                  key:"openid",
+                  data:res.data.res.openid
+                });
+                wx.request({ 
+                  url: `${self.data.kolento}/user/openid/${res.data.res.openid}`, 
+                  success (res2) {
+                    if(res2.data.flag=='success'){
+                      console.log('根据openid获取id信息',res2.data);
+                      if(res2.data.res.length==0){
+                        self.setData({
+                          person:'new'
+                        })
+                      }else{
+                        self.setData({
+                          person:'old'
+                        });
+                        wx.setStorage({
+                          key:"id",
+                          data:res2.data.res[0].id
+                        });
+
+                        
+                      }
+                    }
+                  }
+                })
+              }
+            }
+          })
+        } else {
+          console.log('登录失败！' + res.errMsg)
+        }
+      }
+    })
+    
     wx.getSetting({
       success (res){
         if (res.authSetting['scope.userInfo']) {
@@ -175,14 +233,13 @@ Page({
                 avatar:res.userInfo.avatarUrl,
                 country:res.userInfo.country,
                 status:'已登录'
-              });
-
-
-
-              
+              });              
             }
           })
         }
+      },
+      fail(err){
+        console.log('err',err);
       }
     })
   },

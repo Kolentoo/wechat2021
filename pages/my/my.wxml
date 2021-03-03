@@ -6,7 +6,7 @@
       </button>
     
     </view>
-    <van-cell value="{{login}}" icon="" is-link center wx:if="{{status=='已登录'}}" bindtap="edit">
+    <van-cell value="{{login}}" icon="" center wx:if="{{status=='已登录'}}" bindtap="edit">
       <view slot="title" class="info-con clearfix" >
         <view class="van-cell-text avatar fl" >
           <image src="{{avatar}}" mode="widthFix"></image>
