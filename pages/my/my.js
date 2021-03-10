@@ -74,11 +74,18 @@ Page({
                         'content-type': 'application/json' 
                       },
                       success (res) {
-                        console.log(res.data);
-                        console.log(res.data.res2[0].id);
+                        console.log('data',res.data);
                         wx.setStorage({
                           key:"id",
                           data:res.data.res2[0].id
+                        });
+                        wx.setStorage({
+                          key:"username",
+                          data:res.userInfo.nickName
+                        });
+                        wx.setStorage({
+                          key:"avatar",
+                          data:res.userInfo.avatarUrl
                         });
                         if(res.data.flag=='success'){
                           Toast('欢迎~');
@@ -233,7 +240,15 @@ Page({
                 avatar:res.userInfo.avatarUrl,
                 country:res.userInfo.country,
                 status:'已登录'
-              });              
+              });     
+              wx.setStorage({
+                key:"username",
+                data:res.userInfo.nickName
+              });
+              wx.setStorage({
+                key:"avatar",
+                data:res.userInfo.avatarUrl
+              });         
             }
           })
         }

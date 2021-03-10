@@ -31,13 +31,14 @@
   </view>
   <van-action-sheet class="pop-box" show="{{ commentShow }}" title="点评" bind:close="closePop">
     <view class="star-box">
-      <van-rate value="{{ score }}"/>
+      <van-rate value="{{ score }}" bind:change="changeScore" allow-half/>
       <text class="score-value">{{score}}</text>
     </view>
     <view class="text">
       <van-cell-group>
         <van-field
           class="text-box"
+          bind:change="changeContent"
           value="{{ text }}"
           placeholder="说点什么吧..."
           placeholder-style="color:'#888'"

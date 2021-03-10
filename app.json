@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/discover/discover",
     "pages/new/new",
     "pages/my/my",
     "pages/home/home",
@@ -11,7 +12,7 @@
     "pages/anime/anime",
     "pages/index/index",
     "pages/logs/logs",
-    "pages/discover/discover",
+    
     "pages/about/about"
   ],
   "window": {
@@ -44,7 +45,8 @@
     "van-share-sheet": "@vant/weapp/share-sheet/index",
     "van-panel": "@vant/weapp/panel/index",
     "van-action-sheet": "@vant/weapp/action-sheet/index",
-    "van-toast": "@vant/weapp/toast/index"
+    "van-toast": "@vant/weapp/toast/index",
+    "van-swipe-cell": "@vant/weapp/swipe-cell/index"
   },
   "tabBar": {
     "custom": true,

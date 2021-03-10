@@ -14,51 +14,14 @@ Page({
     num1:20,
     start2:0,
     num2:20,
+    likeBox:[],
+    listBox:[],
   },
 
   onChange(event) {
     console.log('event.detail.name',event.detail.name)
   },
 
-  // 获取全部热门动画
-  getAll(start,num){
-    let self = this;
-    wx.request({
-      url: `${this.data.kolento}/anime/popular/${start}/${num}`, 
-      // data: {},
-      header: {
-        'content-type': 'application/json' 
-      },
-      success (res) {
-        console.log(res.data.res);
-        if(res.data.flag=='success'){
-          self.setData({
-            recommendBox: res.data.res
-          });
-        }
-      }
-    })
-  },
-
-  // 获取评分最高动漫
-  getRanking(start,num){
-    let self = this;
-    wx.request({
-      url: `${this.data.kolento}/anime/ranking/${start}/${num}`, 
-      // data: {},
-      header: {
-        'content-type': 'application/json' 
-      },
-      success (res) {
-        console.log(res.data.res);
-        if(res.data.flag=='success'){
-          self.setData({
-            rankingBox: res.data.res
-          });
-        }
-      }
-    })
-  },
 
   // 进入动漫详情页
   goDetail(item){
@@ -68,19 +31,74 @@ Page({
     })
   },
 
+  // 获取用户收藏的动漫列表
+  getLike(id){
+    let self = this;
+    wx.request({
+      url: `${this.data.kolento}/likeBox/${id}`, 
+      // data: {},
+      header: {
+        'content-type': 'application/json' 
+      },
+      success (res) {
+        console.log(res.data);
+        if(res.data.flag=='success'){
+          self.setData({
+            likeBox: res.data.res[0].likeGroup?res.data.res[0].likeGroup.split(','):''
+          });
+          console.log('likeBox',self.data.likeBox);
+
+          self.getList(res.data.res[0].likeGroup);
+        }
+      }
+    })
+  },
+
+  // 根据id获取收藏列表详情
+  getList(idBox){
+    let self = this;
+    wx.request({
+      url: `${this.data.kolento}/amineBox/${idBox}`, 
+      // data: {},
+      header: {
+        'content-type': 'application/json' 
+      },
+      success (res) {
+        console.log(res.data);
+        if(res.data.flag=='success'){
+          self.setData({
+            listBox: res.data.res
+          });
+          console.log('listBox',self.data.listBox);
+        }
+      }
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let self = this;
+    wx.getStorage({
+      key: 'id',
+      success (res) {
+        console.log('获取用户id',res.data);
+        if(res.data){
+          self.setData({
+            userId:res.data
+          });
+          self.getLike(res.data);
+        }
+      }
+    })
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    this.getAll(this.data.start1,this.data.num1);
-    this.getRanking(this.data.start2,this.data.num2);
+
   },
 
   /**

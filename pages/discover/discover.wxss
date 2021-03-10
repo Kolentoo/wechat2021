@@ -1,4 +1,5 @@
 
+.tips {padding:30rpx 30rpx 10rpx;}
 .anime-box {padding:25rpx 25rpx 180rpx;}
 .anime-list {width: 100%;margin-bottom: 25rpx;}
 .anime-list .pic-box {width: 30%;border-radius:10rpx;overflow: hidden;}

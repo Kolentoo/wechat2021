@@ -9,14 +9,17 @@ Page({
     // kolento:'https://kolento.club',
     kolento:'http://127.0.0.1',
     id:'',
+    name:'',
+    avatar:'',
     userId:'',
     info:{},
     introduce:{},
     liked:'no',
+    likeBox:'',
 
     // 点评相关
     commentShow:false,
-    score:10,
+    score:5,
     text:'',
   },
 
@@ -62,6 +65,41 @@ Page({
     })
   },
 
+  // 获取用户收藏的动漫列表
+  getLike(id){
+    let self = this;
+    wx.request({
+      url: `${this.data.kolento}/likeBox/${id}`, 
+      // data: {},
+      header: {
+        'content-type': 'application/json' 
+      },
+      success (res) {
+        console.log(res.data);
+        if(res.data.flag=='success'){
+          self.setData({
+            likeBox: res.data.res[0].likeGroup
+          });
+          if(res.data.res[0].likeGroup){
+            if(res.data.res[0].likeGroup.indexOf(self.data.id)>-1){
+              self.setData({
+                liked:'yes'
+              })
+            }else{
+              self.setData({
+                liked:'no'
+              })
+            }
+          }else{
+            self.setData({
+              liked:'no'
+            })
+          }
+        }
+      }
+    })
+  },
+
   like(animeId,id){
     let self = this;
     wx.request({
@@ -91,6 +129,19 @@ Page({
     })
   },
 
+  changeScore(e){
+    console.log('e',e)
+    this.setData({
+      score:e.detail
+    });
+  },
+
+  changeContent(e){
+    this.setData({
+      text:e.detail
+    })
+  },
+
   closePop(){
     this.setData({
       commentShow:false
@@ -99,10 +150,43 @@ Page({
 
   comment(){
     console.log('点评');
-    Toast('开发中~~');
     this.setData({
       commentShow:true
     });
+  },
+
+  submitInfo(){
+    var t = new Date();
+    let self = this;
+    wx.request({
+      url: `${this.data.kolento}/addComment`, 
+      method:'post',
+      data: {
+        id:self.data.id,
+        time:t.toLocaleString(),
+        userName:self.data.name,
+        avatar:self.data.avatar,
+        content:self.data.text,
+        userId:self.data.userId+'',
+        score:self.data.score*2+'',
+      },
+      header: {
+        'content-type': 'application/json' 
+      },
+      success (res) {
+        console.log(res.data);
+        if(res.data.flag=='success'){
+          this.setData({
+            commentShow:false
+          });
+          Toast('评论成功');
+          this.setData({
+            text:'',
+            score:5
+          });
+        }
+      }
+    })
   },
 
   /**
@@ -118,6 +202,27 @@ Page({
           self.setData({
             userId:res.data
           });
+          self.getLike(res.data);
+        }
+      }
+    })
+    wx.getStorage({
+      key: 'username',
+      success (res) {
+        if(res.data){
+          self.setData({
+            name:res.data
+          });
+        }
+      }
+    })
+    wx.getStorage({
+      key: 'avatar',
+      success (res) {
+        if(res.data){
+          self.setData({
+            avatar:res.data
+          });
         }
       }
     })
@@ -126,6 +231,7 @@ Page({
     });
     this.getDetail(options.id);
     this.getIntroduce(options.id);
+    
   },
 
   /**
