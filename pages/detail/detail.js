@@ -103,24 +103,27 @@ Page({
       success (res) {
         console.log(res.data);
         if(res.data.flag=='success'){
-          self.setData({
-            likeBox: res.data.res[0].likeGroup
-          });
-          if(res.data.res[0].likeGroup){
-            if(res.data.res[0].likeGroup.indexOf(self.data.id)>-1){
-              self.setData({
-                liked:'yes'
-              })
+          if(res.data.res[0]){
+            self.setData({
+              likeBox: res.data.res[0].likeGroup
+            });
+            if(res.data.res[0].likeGroup){
+              if(res.data.res[0].likeGroup.indexOf(self.data.id)>-1){
+                self.setData({
+                  liked:'yes'
+                })
+              }else{
+                self.setData({
+                  liked:'no'
+                })
+              }
             }else{
               self.setData({
                 liked:'no'
               })
             }
-          }else{
-            self.setData({
-              liked:'no'
-            })
           }
+
         }
       }
     })
@@ -128,6 +131,7 @@ Page({
 
   like(animeId,id){
     let self = this;
+    console.log('self.data.userId',self.data.userId);
     if(self.data.userId){
       wx.request({
         url: `${this.data.kolento}/addAnime/${self.data.id}/${self.data.userId}/${self.data.liked}`, 

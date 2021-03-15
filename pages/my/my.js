@@ -6,8 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    // kolento:'https://kolento.club',
-    kolento:'http://127.0.0.1',
+    kolento:'https://kolento.club',
+    // kolento:'http://127.0.0.1',
     // 头部个人信息
     avatar:'',
     mail:'../../images/mail.jpeg',
@@ -50,7 +50,7 @@ Page({
             // 已经授权，可以直接调用 getUserInfo 获取头像昵称
             wx.getUserInfo({
               success: function(res) {
-                console.log(res.userInfo);
+                console.log(res.userInfo,'授权成功');
                 self.setData({
                   name:res.userInfo.nickName,
                   sex:res.userInfo.gender,
@@ -74,7 +74,7 @@ Page({
                         'content-type': 'application/json' 
                       },
                       success (res) {
-                        console.log('data',res.data);
+                        console.log('data111111',res.data);
                         wx.setStorage({
                           key:"id",
                           data:res.data.res2[0].id
