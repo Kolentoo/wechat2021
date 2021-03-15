@@ -4,7 +4,7 @@
 .img-box {width: 50%;margin:0 auto;}
 .img-box .img {width: 100%;height: 500rpx;}
 
-.information {padding:40rpx 30rpx 30rpx;}
+.information {padding:40rpx 30rpx 160rpx;}
 .information .name1 {font-size: 34rpx;font-weight: bold;margin-bottom: 20rpx;}
 .information .name2 {font-size: 26rpx;margin-top: 10rpx;}
 .information .other {font-size: 26rpx;margin-top: 10rpx;}
@@ -31,3 +31,13 @@
 .star-box .van-field__input--textarea {height: 200rpx!important;}
 .van-cell--large .van-cell__value {height: 200rpx!important;}
 .pop-box .van-button--info {background: #4a9899!important;margin-left: 80%;margin-top: 20rpx;border-radius:10rpx;border-color:#4a9899!important;}
+
+.advice-box {padding:25rpx;}
+.advice-content {margin-top: 30rpx;}
+.advice-list {display:flex;margin-bottom: 40rpx;}
+.avatar {width: 100rpx;height: 100rpx;overflow: hidden;border-radius:50%;}
+.avatar image{width: 100%;vertical-align: middle;height: 100%;}
+.detail {width: 90%;margin-left: 15rpx;}
+.detail .name {font-size: 28rpx;color:#333;margin-bottom: 15rpx;}
+.detail .content {font-size: 24rpx;color:#333;margin-bottom: 15rpx;}
+.detail .time {color:#888;font-size: 24rpx;}

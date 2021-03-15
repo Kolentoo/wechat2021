@@ -3,7 +3,7 @@
   </van-panel>
 
   <view class="advice-content">
-    <van-cell value="全部评论" icon="" is-link bindtap="moreContent">
+    <van-cell value="我要吐槽" icon="" is-link bindtap="moreContent">
       <view slot="title">
         <view class="van-cell-text">精选评论</view>
       </view>
@@ -21,5 +21,24 @@
       </view>
     </view>
   </view>
+
+  <van-action-sheet class="pop-box" show="{{ commentShow }}" title="吐槽与建议" bind:close="closePop">
+    <view class="text">
+      <van-cell-group>
+        <van-field
+          class="text-box"
+          bind:change="changeContent"
+          value="{{ text }}"
+          placeholder="说点什么吧..."
+          placeholder-style="color:'#888'"
+          border="{{ true }}"
+          type="textarea"
+          size="large"
+        />
+        <van-button class="btn submit-btn" icon="award-o" type="info" size="small" bindtap="submitAdvice">发射</van-button>
+    </van-cell-group>
+    </view>
+  </van-action-sheet>
+  <van-toast id="van-toast" />
   
 </view>

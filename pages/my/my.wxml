@@ -39,7 +39,7 @@
     <van-cell value="" is-link bindtap="goMessage">
       <view slot="title">
         <text class="van-cell-text">消息</text>
-        <van-tag type="danger" class="tag">99</van-tag>
+        <van-tag type="danger" class="tag"></van-tag>
       </view>
     </van-cell>
     <van-cell value="" is-link bindtap="goAdvice">

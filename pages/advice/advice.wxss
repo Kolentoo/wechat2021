@@ -12,3 +12,15 @@
 .detail .content {font-size: 24rpx;color:#333;margin-bottom: 15rpx;}
 .detail .time {color:#888;font-size: 24rpx;}
 
+.bottom {position: fixed;width: 100%;height: 120rpx;background: #fff;bottom: 0;left: 0;z-index:10;
+  box-shadow:0 2px 12px rgba(100, 101, 102, 0.12);}
+.btn-group {display:flex;justify-content: space-between;align-items: center;width: 60%;height: 120rpx;margin:0 auto;}
+.btn-group .van-button--info {background: #4a9899!important;border-radius:10rpx!important;border-color:#4a9899!important;}
+
+.star-box {display:flex;justify-content: center;align-items: center;padding-top: 30rpx;padding-bottom: 30rpx;}
+.star-box .score-value {font-size: 36rpx;font-weight: bold;margin-left: 25rpx;position: relative;top: -4rpx;color:#4a9899;}
+.star-box .text-box {height: 100rpx;}
+.star-box .van-field__input--textarea {height: 200rpx!important;}
+.van-cell--large .van-cell__value {height: 200rpx!important;}
+.pop-box .van-button--info {background: #4a9899!important;margin-left: 80%;margin-top: 20rpx;border-radius:10rpx;border-color:#4a9899!important;}
+

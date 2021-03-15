@@ -23,6 +23,27 @@
       <view class="content">{{introduce.content?introduce.content:'暂无简介'}}</view>
     </view>
   </view>
+
+  <view class="advice-content" wx:if="{{adviceBox.length>0}}">
+    <van-cell value="" icon="" is-link bindtap="moreContent">
+      <view slot="title">
+        <view class="van-cell-text">精选评论</view>
+      </view>
+    </van-cell>
+    <view class="advice-box">
+      <view class="advice-list clearfix" wx:for="{{adviceBox}}" wx:key="this">
+        <view class="avatar">
+          <image mode="scaleToFill" src="{{item.avatar}}" />
+        </view>
+        <view class="detail">
+          <view class="name">{{item.name}}</view>
+          <view class="content">{{item.content}}</view>
+          <view class="time">{{item.time}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
   <view class="bottom">
     <view class="btn-group">
       <van-button class="btn" icon="{{liked?'like':'like-o'}}" type="info" size="small" bindtap="like">{{liked=='yes'?'已关注':'关注'}}</van-button>
@@ -32,7 +53,7 @@
   <van-action-sheet class="pop-box" show="{{ commentShow }}" title="点评" bind:close="closePop">
     <view class="star-box">
       <van-rate value="{{ score }}" bind:change="changeScore" allow-half/>
-      <text class="score-value">{{score}}</text>
+      <text class="score-value">{{score*2}}</text>
     </view>
     <view class="text">
       <van-cell-group>

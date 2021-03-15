@@ -8,8 +8,9 @@ Page({
     keywords:'',
     // 轮播图
     banners: [
-      {banner:'../../images/banner1.jpg'},
-      {banner:'../../images/banner1.jpg'}
+      {banner:'../../images/banner1.jpg',id:'278826'},
+      {banner:'../../images/banner2.jpg',id:'317613'},
+      {banner:'../../images/banner3.jpg',id:'282684'},
     ],
     indicatorDots: true,
     vertical: false,
@@ -40,6 +41,13 @@ Page({
     console.log('e',e);
     wx.navigateTo({
       url: '../search/search?name='+e.detail
+    })
+  },
+
+  goAnime(e){
+    console.log(e)
+    wx.navigateTo({
+      url: '../detail/detail?id='+e.target.dataset.item.id
     })
   },
 

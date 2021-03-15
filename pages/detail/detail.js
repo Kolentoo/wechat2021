@@ -6,8 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    // kolento:'https://kolento.club',
-    kolento:'http://127.0.0.1',
+    kolento:'https://kolento.club',
+    // kolento:'http://127.0.0.1',
     id:'',
     name:'',
     avatar:'',
@@ -21,6 +21,11 @@ Page({
     commentShow:false,
     score:5,
     text:'',
+
+    // 评论
+    adviceBox:[],
+    start:0,
+    num:20
   },
 
   // 获取详情
@@ -65,6 +70,27 @@ Page({
     })
   },
 
+  // 获取评论
+  getComment(id){
+    let self = this;
+    wx.request({
+      url: `${self.data.kolento}/comment/list/${id}/${self.data.start}/${self.data.num}`, 
+      // data: {},
+      header: {
+        'content-type': 'application/json' 
+      },
+      success (res) {
+        console.log(res.data);
+        if(res.data.flag=='success'){
+          self.setData({
+            adviceBox: res.data.res
+          });
+          console.log('adviceBox',self.data.adviceBox);
+        }
+      }
+    })
+  },
+
   // 获取用户收藏的动漫列表
   getLike(id){
     let self = this;
@@ -102,31 +128,36 @@ Page({
 
   like(animeId,id){
     let self = this;
-    wx.request({
-      url: `${this.data.kolento}/addAnime/${self.data.id}/${self.data.userId}/${self.data.liked}`, 
-      // data: {},
-      header: {
-        'content-type': 'application/json' 
-      },
-      success (res) {
-        console.log(res.data);
-        if(res.data.flag=='success'){
-          if(self.data.liked=='yes'){
-            self.setData({
-              liked:'no'
-            });
-            Toast('取消成功');
-          }else{
-            self.setData({
-              liked:'yes'
-            });
-            Toast('收藏成功');
+    if(self.data.userId){
+      wx.request({
+        url: `${this.data.kolento}/addAnime/${self.data.id}/${self.data.userId}/${self.data.liked}`, 
+        // data: {},
+        header: {
+          'content-type': 'application/json' 
+        },
+        success (res) {
+          console.log(res.data);
+          if(res.data.flag=='success'){
+            if(self.data.liked=='yes'){
+              self.setData({
+                liked:'no'
+              });
+              Toast('取消成功');
+            }else{
+              self.setData({
+                liked:'yes'
+              });
+              Toast('收藏成功');
+            }
+  
+            
           }
-
-          
         }
-      }
-    })
+      })
+    }else{
+      Toast('请先登录~');
+    }
+
   },
 
   changeScore(e){
@@ -158,35 +189,41 @@ Page({
   submitInfo(){
     var t = new Date();
     let self = this;
-    wx.request({
-      url: `${this.data.kolento}/addComment`, 
-      method:'post',
-      data: {
-        id:self.data.id,
-        time:t.toLocaleString(),
-        userName:self.data.name,
-        avatar:self.data.avatar,
-        content:self.data.text,
-        userId:self.data.userId+'',
-        score:self.data.score*2+'',
-      },
-      header: {
-        'content-type': 'application/json' 
-      },
-      success (res) {
-        console.log(res.data);
-        if(res.data.flag=='success'){
-          this.setData({
-            commentShow:false
-          });
-          Toast('评论成功');
-          this.setData({
-            text:'',
-            score:5
-          });
+    if(self.data.userId){
+      wx.request({
+        url: `${this.data.kolento}/addComment`, 
+        method:'post',
+        data: {
+          id:self.data.id,
+          time:t.toLocaleString(),
+          userName:self.data.name,
+          avatar:self.data.avatar,
+          content:self.data.text,
+          userId:self.data.userId+'',
+          score:self.data.score*2+'',
+        },
+        header: {
+          'content-type': 'application/json' 
+        },
+        success (res) {
+          console.log(res.data);
+          if(res.data.flag=='success'){
+            self.setData({
+              commentShow:false
+            });
+            Toast('评论成功');
+            self.setData({
+              text:'',
+              score:5
+            });
+            self.getComment(self.data.id);
+          }
         }
-      }
-    })
+      })
+    }else{
+      Toast('请先登录~');
+    }
+
   },
 
   /**
@@ -231,6 +268,7 @@ Page({
     });
     this.getDetail(options.id);
     this.getIntroduce(options.id);
+    this.getComment(options.id);
     
   },
 

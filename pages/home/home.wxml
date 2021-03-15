@@ -10,7 +10,7 @@
         <block wx:for="{{banners}}" wx:key="*this">
           <swiper-item>
             <view class="swiper-item {{item}}">
-              <image src="{{item.banner}}" aspectFit></image>
+              <image src="{{item.banner}}" aspectFit bindtap="goAnime" data-item="{{item}}"></image>
             </view>
           </swiper-item>
         </block>
