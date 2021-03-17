@@ -34,7 +34,7 @@
     </view>
     <view class="desc">
       <view class="h3">评论精选</view>
-      <view class="content">{{introduce.short_comment.content}}</view>
+      <view class="content">{{introduce.short_comment.content?introduce.short_comment.content:'暂无评论'}}</view>
     </view>
   </view>
 </view>

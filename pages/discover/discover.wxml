@@ -3,7 +3,7 @@
   <van-empty description="快去收藏吧~"  wx:if="{{listBox.length==0}}"/>
   <view class="tips" wx:if="{{listBox.length>0}}">哇哦，已经关注了 {{listBox.length}} 部动漫啦~</view>
   <view class="anime-box" wx:if="{{listBox.length>0}}">
-    <view class="anime-list clearfix" wx:for="{{listBox}}" wx:key="this">
+    <view class="anime-list clearfix" wx:for="{{listBox}}" wx:key="this" bindtap="goDetail" data-id="{{item.id}}">
       <view class="pic-box fl">
         <image src="{{item.bigSrc}}" mode="scaleToFill"></image>
       </view>

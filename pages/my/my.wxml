@@ -15,7 +15,7 @@
           <view class="name">昵称: {{name}}</view>
           <view class="other">
             <text class="sex">性别: {{sex==1?'绅士':'仙女'}}</text>
-            <text class="country">国家: {{country}}</text>
+            <text class="country">国家: {{country?country:'暂无信息'}}</text>
           </view>
         </view>
       </view>

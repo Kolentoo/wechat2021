@@ -35,7 +35,7 @@
           <image mode="scaleToFill" src="{{item.avatar}}" />
         </view>
         <view class="detail">
-          <view class="name">{{item.name}}</view>
+          <view class="name">{{item.userName}} <text class="score-value">评分：{{item.score}}</text></view>
           <view class="content">{{item.content}}</view>
           <view class="time">{{item.time}}</view>
         </view>

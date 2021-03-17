@@ -106,6 +106,9 @@ Page({
    */
   onShow: function () {
     this.getTabBar().init();
+    if(this.data.userId){
+      this.getLike(this.data.userId);
+    }
   },
 
   /**
@@ -126,7 +129,10 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    if(this.data.userId){
+      this.getLike(this.data.userId);
+    }
+    
   },
 
   /**

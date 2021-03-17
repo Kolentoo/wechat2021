@@ -133,11 +133,16 @@ Page({
 
   // 首页菜单栏跳转
   goMenu(event){
-    console.log('event',event);
-    if(event.currentTarget.dataset.item.name=='正在热映'||event.currentTarget.dataset.item.name=='即将上映'||event.currentTarget.dataset.item.name=='番剧榜单'){
+    console.log('event',event.currentTarget.dataset.item.name);
+    if(event.currentTarget.dataset.item.name=='正在热映'||event.currentTarget.dataset.item.name=='即将上映'){
       wx.navigateTo({
         url: event.currentTarget.dataset.item.url
       });
+    }else if(event.currentTarget.dataset.item.name=='新番榜单'){
+      wx.navigateTo({
+        url: event.currentTarget.dataset.item.url
+      });
+
     }else{
       wx.switchTab({
         url: event.currentTarget.dataset.item.url
@@ -239,6 +244,10 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    return {
+      title:'2次元裂缝，新番电影信息查询，每日更新，漫迷追剧必备 --Kolento',
+      path:"pages/home/home",
+      imageUrl:'../../images/share1.jpg'
+    }
   }
 })
