@@ -15,7 +15,7 @@ Page({
     name:'Kolento',
     country:'',
     sex:'1',
-    id:'123',
+    id:'',
     login:'', 
     status:'未登录',
     openid:'',
@@ -74,7 +74,6 @@ Page({
                         'content-type': 'application/json' 
                       },
                       success (res) {
-                        console.log('data111111',res.data);
                         wx.setStorage({
                           key:"id",
                           data:res.data.res2[0].id
@@ -93,6 +92,22 @@ Page({
                       }
                     });
                   }else{
+                    // wx.setStorage({
+                    //   key:"id",
+                    //   data:res.data.res2[0].id
+                    // });
+                    wx.setStorage({
+                      key:"id",
+                      data:self.data.id
+                    });
+                    wx.setStorage({
+                      key:"username",
+                      data:res.userInfo.nickName
+                    });
+                    wx.setStorage({
+                      key:"avatar",
+                      data:res.userInfo.avatarUrl
+                    });
                     Toast('欢迎~');
                     console.log('数据库中已经有您的资料');
                   }
@@ -206,12 +221,21 @@ Page({
                         })
                       }else{
                         self.setData({
-                          person:'old'
+                          person:'old',
+                          id:res2.data.res[0].id
                         });
-                        wx.setStorage({
-                          key:"id",
-                          data:res2.data.res[0].id
-                        });
+                        // wx.setStorage({
+                        //   key:"id",
+                        //   data:res2.data.res[0].id
+                        // });
+                        // wx.setStorage({
+                        //   key:"username",
+                        //   data:res2.data.res[0].name
+                        // });
+                        // wx.setStorage({
+                        //   key:"avatar",
+                        //   data:res.res2.data.res[0].avatar
+                        // }); 
 
                         
                       }
@@ -230,6 +254,7 @@ Page({
     wx.getSetting({
       success (res){
         if (res.authSetting['scope.userInfo']) {
+          console.log('已经授权，可以直接调用 getUserInfo 获取头像昵称')
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称
           wx.getUserInfo({
             success: function(res) {
